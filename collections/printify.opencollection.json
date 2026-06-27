@@ -1,0 +1,471 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Printify API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the list of shops in a Printify account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops.json"
+          },
+          "docs": "Retrieve the list of shops in a Printify account."
+        },
+        {
+          "info": {
+            "name": "Disconnect a shop from the account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/connection.json"
+          },
+          "docs": "Disconnect a shop from the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of available blueprints.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints.json"
+          },
+          "docs": "Retrieve a list of available blueprints."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific blueprint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/{blueprint_id}.json"
+          },
+          "docs": "Retrieve a specific blueprint."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of print providers for a specific blueprint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/{blueprint_id}/print_providers.json"
+          },
+          "docs": "Retrieve a list of print providers for a specific blueprint."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of variants of a blueprint from a specific print provider.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/variants.json"
+          },
+          "docs": "Retrieve a list of variants of a blueprint from a specific print provider."
+        },
+        {
+          "info": {
+            "name": "Retrieve shipping information for a blueprint from a specific print provider.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/shipping.json"
+          },
+          "docs": "Retrieve shipping information for a blueprint from a specific print provider."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of all available print providers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/print_providers.json"
+          },
+          "docs": "Retrieve a list of all available print providers."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific print provider and the blueprints it supports.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/print_providers/{print_provider_id}.json"
+          },
+          "docs": "Retrieve a specific print provider and the blueprints it supports."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of all products in a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products.json"
+          },
+          "docs": "Retrieve a list of all products in a shop."
+        },
+        {
+          "info": {
+            "name": "Create a new product in a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new product in a shop."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}.json"
+          },
+          "docs": "Retrieve a specific product."
+        },
+        {
+          "info": {
+            "name": "Update a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a product."
+        },
+        {
+          "info": {
+            "name": "Delete a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}.json"
+          },
+          "docs": "Delete a product."
+        },
+        {
+          "info": {
+            "name": "Publish a product to a connected sales channel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/publish.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a product to a connected sales channel."
+        },
+        {
+          "info": {
+            "name": "Mark a product publishing as succeeded.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/publishing_succeeded.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark a product publishing as succeeded."
+        },
+        {
+          "info": {
+            "name": "Mark a product publishing as failed.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/publishing_failed.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark a product publishing as failed."
+        },
+        {
+          "info": {
+            "name": "Notify that a product was unpublished from the sales channel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/unpublish.json"
+          },
+          "docs": "Notify that a product was unpublished from the sales channel."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of orders in a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/orders.json"
+          },
+          "docs": "Retrieve a list of orders in a shop."
+        },
+        {
+          "info": {
+            "name": "Submit a new order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/orders.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new order."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/orders/{order_id}.json"
+          },
+          "docs": "Retrieve a specific order."
+        },
+        {
+          "info": {
+            "name": "Submit a Printify Express order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/express.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a Printify Express order."
+        },
+        {
+          "info": {
+            "name": "Calculate the shipping cost of an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/orders/shipping.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Calculate the shipping cost of an order."
+        },
+        {
+          "info": {
+            "name": "Send an order to production.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/orders/{order_id}/send_to_production.json"
+          },
+          "docs": "Send an order to production."
+        },
+        {
+          "info": {
+            "name": "Cancel an unpaid order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/orders/{order_id}/cancel.json"
+          },
+          "docs": "Cancel an unpaid order (status on-hold or payment-not-received)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of images in the Media Library.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/uploads.json"
+          },
+          "docs": "Retrieve a list of images in the Media Library."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific uploaded image.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/uploads/{image_id}.json"
+          },
+          "docs": "Retrieve a specific uploaded image."
+        },
+        {
+          "info": {
+            "name": "Upload an image via URL or base64-encoded contents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/uploads/images.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload an image via URL or base64-encoded contents."
+        },
+        {
+          "info": {
+            "name": "Archive an uploaded image.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/uploads/{image_id}/archive.json"
+          },
+          "docs": "Archive an uploaded image."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of webhooks configured for a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/webhooks.json"
+          },
+          "docs": "Retrieve a list of webhooks configured for a shop."
+        },
+        {
+          "info": {
+            "name": "Create a new webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/webhooks.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook."
+        },
+        {
+          "info": {
+            "name": "Modify an existing webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/webhooks/{webhook_id}.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing webhook."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printify.com/v1/shops/{shop_id}/webhooks/{webhook_id}.json"
+          },
+          "docs": "Delete a webhook."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

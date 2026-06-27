@@ -1,0 +1,63 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Printify
+providerId: printify
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: true
+tags:
+- Print on Demand
+- Ecommerce
+- Marketplace
+- Fulfillment
+- Merchandise
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Printify API enforces a global rate limit of 600 requests per minute per
+  account, with stricter sub-limits on catalog endpoints (100 requests per
+  minute) and product publishing (200 requests per 30 minutes). Requests that
+  exceed a limit return 429 Too Many Requests. Printify also requires the error
+  rate to stay below 5% of total requests.
+notes: >-
+  Limits are applied per account/token. Verify the current published thresholds
+  on the Printify API reference during reconciliation, as Printify may adjust
+  them over time.
+sources:
+- https://developers.printify.com/#rate-limits
+- https://developers.printify.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: Global Requests Per Minute
+  scope: account
+  metric: requests
+  limit: 600
+  notes: Maximum of 600 requests per minute across the API.
+- name: Catalog Requests Per Minute
+  scope: account
+  metric: requests
+  limit: 100
+  notes: Separate, stricter limit applied to catalog endpoints.
+- name: Product Publishing
+  scope: account
+  metric: requests
+  limit: 200
+  notes: Up to 200 product publishing requests per 30 minutes.
+- name: Error Rate Threshold
+  scope: account
+  metric: errors
+  limit: 5%
+  notes: Errors may not exceed 5% of total requests; abusive clients may be throttled.
+policies:
+- name: Throttling Response
+  description: Requests exceeding any limit receive a 429 Too Many Requests response.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After when throttled.
+- name: User-Agent Required
+  description: All requests must include a User-Agent header identifying the client application.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

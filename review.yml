@@ -1,0 +1,85 @@
+aid: printify
+name: Printify
+review:
+  question: Does Printify expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-25'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Printify's only asynchronous surface is outbound HTTP webhooks (the
+    provider sends a POST to a merchant-supplied URL when a shop event
+    occurs). Webhooks are modeled as REST resources in the OpenAPI document
+    rather than as an AsyncAPI document. No SSE or WebSocket stream is
+    documented, so no AsyncAPI artifact was created.
+findings:
+  summary: |
+    Printify does not publish a documented public WebSocket API. The Printify
+    platform exposes only a REST (HTTPS) API under https://api.printify.com/v1
+    secured with a Bearer token (Personal Access Token or OAuth 2.0) and a
+    required User-Agent header. Event delivery is handled with outbound HTTP
+    webhooks: Printify sends a POST request with a JSON payload to a
+    merchant-registered URL when product, order, and shop events occur. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint
+    is documented for any resource.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.printify.com/v1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST callbacks to a merchant-supplied URL on shop events. One-way provider-to-merchant HTTP, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Printify's API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.printify.com/v1/shops.json
+    - DELETE https://api.printify.com/v1/shops/{shop_id}/connection.json
+    - GET    https://api.printify.com/v1/catalog/blueprints.json
+    - GET    https://api.printify.com/v1/catalog/blueprints/{blueprint_id}.json
+    - GET    https://api.printify.com/v1/catalog/blueprints/{blueprint_id}/print_providers.json
+    - GET    https://api.printify.com/v1/catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/variants.json
+    - GET    https://api.printify.com/v1/catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/shipping.json
+    - GET    https://api.printify.com/v1/catalog/print_providers.json
+    - GET    https://api.printify.com/v1/catalog/print_providers/{print_provider_id}.json
+    - GET    https://api.printify.com/v1/shops/{shop_id}/products.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/products.json
+    - GET    https://api.printify.com/v1/shops/{shop_id}/products/{product_id}.json
+    - PUT    https://api.printify.com/v1/shops/{shop_id}/products/{product_id}.json
+    - DELETE https://api.printify.com/v1/shops/{shop_id}/products/{product_id}.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/publish.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/publishing_succeeded.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/publishing_failed.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/products/{product_id}/unpublish.json
+    - GET    https://api.printify.com/v1/shops/{shop_id}/orders.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/orders.json
+    - GET    https://api.printify.com/v1/shops/{shop_id}/orders/{order_id}.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/express.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/orders/shipping.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/orders/{order_id}/send_to_production.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/orders/{order_id}/cancel.json
+    - GET    https://api.printify.com/v1/uploads.json
+    - GET    https://api.printify.com/v1/uploads/{image_id}.json
+    - POST   https://api.printify.com/v1/uploads/images.json
+    - POST   https://api.printify.com/v1/uploads/{image_id}/archive.json
+    - GET    https://api.printify.com/v1/shops/{shop_id}/webhooks.json
+    - POST   https://api.printify.com/v1/shops/{shop_id}/webhooks.json
+    - PUT    https://api.printify.com/v1/shops/{shop_id}/webhooks/{webhook_id}.json
+    - DELETE https://api.printify.com/v1/shops/{shop_id}/webhooks/{webhook_id}.json
+sources:
+  - url: https://developers.printify.com/
+    type: Documentation
+    note: Overview lists REST base URL https://api.printify.com/v1 with Bearer auth; no WebSocket mentioned.
+  - url: https://developers.printify.com/#webhooks
+    type: APIReference
+    note: Webhooks are outbound HTTP POST callbacks to a merchant URL, not a WebSocket stream.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Printify's asynchronous
+    behavior is limited to outbound HTTP webhooks, which are represented as
+    REST resources in the OpenAPI document. No AsyncAPI document was created.

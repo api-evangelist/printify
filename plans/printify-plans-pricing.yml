@@ -1,0 +1,173 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Printify
+providerId: printify
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: true
+tags:
+- Print on Demand
+- Ecommerce
+- Marketplace
+- Fulfillment
+- Merchandise
+- Plans
+description: >-
+  Printify monetizes through membership tiers (Free, Premium, Enterprise) rather
+  than API usage fees. The API itself is free to use for all account types. Costs
+  are incurred per order: the product base price plus shipping, paid only when a
+  customer places an order. Premium and Enterprise memberships unlock discounts on
+  product and fulfillment costs. There is no charge for API calls.
+notes: >-
+  Premium monthly price rose from $29 to $39/month on 2026-02-17; the annual rate
+  remains $24.99/month. Verify current membership pricing, store limits, and
+  discount percentages on the Printify pricing page during reconciliation.
+sources:
+- https://printify.com/pricing/
+- https://developers.printify.com/
+plans:
+- id: printify-free
+  name: Free
+  type: free
+  description: >-
+    Free membership with no monthly charge, no trial, and no credit card
+    required. Includes up to 5 connected stores and unlimited product designs.
+    Full access to the Printify API. Pay only the product base price and
+    shipping when a customer orders.
+  entries:
+  - label: Monthly Membership Fee
+    name: membership_free
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  - label: Connected Stores
+    name: stores_free
+    type: flat
+    metric: stores
+    limit: 5
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Per-Order Product Cost
+    name: product_cost_free
+    type: usage
+    metric: orders
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: product base price + shipping per order
+    userMultiplied: false
+  - label: API Access
+    name: api_access_free
+    type: flat
+    metric: api
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: no API fee
+    userMultiplied: false
+  elements:
+  - name: Shops API
+  - name: Catalog API
+  - name: Products API
+  - name: Orders API
+  - name: Uploads API
+  - name: Webhooks API
+- id: printify-premium
+  name: Premium
+  type: paid
+  description: >-
+    Premium membership offering a discount of up to roughly 20% on most catalog
+    products and fulfillment costs, plus up to 10 connected stores. Billed
+    $39/month monthly or $24.99/month annually. Full access to the Printify API.
+  entries:
+  - label: Monthly Membership Fee (monthly billing)
+    name: membership_premium_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $39 per month
+    userMultiplied: false
+  - label: Monthly Membership Fee (annual billing)
+    name: membership_premium_annual
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $24.99 per month billed annually
+    userMultiplied: false
+  - label: Connected Stores
+    name: stores_premium
+    type: flat
+    metric: stores
+    limit: 10
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Product / Fulfillment Discount
+    name: discount_premium
+    type: usage
+    metric: orders
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: up to ~20% off product base price + shipping
+    userMultiplied: false
+  elements:
+  - name: Up to 20% Product Discount
+  - name: 10 Connected Stores
+  - name: Full API Access
+- id: printify-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom-negotiated membership for high-volume merchants processing thousands
+    of orders daily. Includes product discounts above Premium rates negotiated by
+    volume, unlimited connected stores, dedicated support, and a custom SLA.
+    Contact Printify sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Connected Stores
+    name: stores_enterprise
+    type: flat
+    metric: stores
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: unlimited
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Discounts
+  - name: Unlimited Connected Stores
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

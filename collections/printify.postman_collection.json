@@ -1,0 +1,1248 @@
+{
+  "item": [
+    {
+      "id": "9bd114bd-d746-4bda-91f7-a7859ee8fcc4",
+      "name": "Shops",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e1fe883-e465-49b5-a944-cad8fdc8009e",
+          "name": "Retrieve the list of shops in a Printify account.",
+          "request": {
+            "name": "Retrieve the list of shops in a Printify account.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6925ec8-d3ac-4153-a3f4-c9725017daaa",
+          "name": "Disconnect a shop from the account.",
+          "request": {
+            "name": "Disconnect a shop from the account.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "connection.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fbc6c012-260a-4d66-81e9-c2c166fd3d88",
+      "name": "Catalog",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b1e3dc3-9064-4455-9fb3-76110bc9f6f8",
+          "name": "Retrieve a list of available blueprints.",
+          "request": {
+            "name": "Retrieve a list of available blueprints.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50a87fc5-76a8-4a54-9d2a-e265bdc62264",
+          "name": "Retrieve a specific blueprint.",
+          "request": {
+            "name": "Retrieve a specific blueprint.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                "{blueprint_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13c298a1-0dbe-4f52-92ba-4ea3562e3f6c",
+          "name": "Retrieve a list of print providers for a specific blueprint.",
+          "request": {
+            "name": "Retrieve a list of print providers for a specific blueprint.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                "{blueprint_id}",
+                "print_providers.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a345e23b-e626-4f3e-b588-b13a452e5573",
+          "name": "Retrieve a list of variants of a blueprint from a specific print provider.",
+          "request": {
+            "name": "Retrieve a list of variants of a blueprint from a specific print provider.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                "{blueprint_id}",
+                "print_providers",
+                "{print_provider_id}",
+                "variants.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "199df258-b087-463b-ae79-43139552f7fb",
+          "name": "Retrieve shipping information for a blueprint from a specific print provider.",
+          "request": {
+            "name": "Retrieve shipping information for a blueprint from a specific print provider.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                "{blueprint_id}",
+                "print_providers",
+                "{print_provider_id}",
+                "shipping.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4854ba7-993b-43f7-8d6c-f081acc05b93",
+          "name": "Retrieve a list of all available print providers.",
+          "request": {
+            "name": "Retrieve a list of all available print providers.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "print_providers.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76310ae1-bc40-433f-83f6-1df6e4a5971b",
+          "name": "Retrieve a specific print provider and the blueprints it supports.",
+          "request": {
+            "name": "Retrieve a specific print provider and the blueprints it supports.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "print_providers",
+                "{print_provider_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "050eae00-5577-430c-8ff0-92a1c696d85d",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4bb0f5b-9f73-4421-8985-f0008c6fa624",
+          "name": "Retrieve a list of all products in a shop.",
+          "request": {
+            "name": "Retrieve a list of all products in a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c01d47f3-4621-45c3-a013-a75f8d07f08b",
+          "name": "Create a new product in a shop.",
+          "request": {
+            "name": "Create a new product in a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"blueprint_id\": 0,\n  \"print_provider_id\": 0,\n  \"variants\": [],\n  \"print_areas\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f804b7a1-e484-4a70-acca-de6f605ae5a2",
+          "name": "Retrieve a specific product.",
+          "request": {
+            "name": "Retrieve a specific product.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e22ed8a2-7ec9-4255-9685-f710c6745ddd",
+          "name": "Update a product.",
+          "request": {
+            "name": "Update a product.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de87ef26-fdc1-49d2-890e-35b292230393",
+          "name": "Delete a product.",
+          "request": {
+            "name": "Delete a product.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edd1450f-18ad-43ee-9a10-1b651e14cac7",
+          "name": "Publish a product to a connected sales channel.",
+          "request": {
+            "name": "Publish a product to a connected sales channel.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}",
+                "publish.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": true,\n  \"description\": true,\n  \"images\": true,\n  \"variants\": true,\n  \"tags\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe6c896d-917c-42ce-8b4a-c0d518209f6e",
+          "name": "Mark a product publishing as succeeded.",
+          "request": {
+            "name": "Mark a product publishing as succeeded.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}",
+                "publishing_succeeded.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external\": {\n    \"id\": \"<string>\",\n    \"handle\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3044b95d-93ed-404c-bcd8-23f42da1f39d",
+          "name": "Mark a product publishing as failed.",
+          "request": {
+            "name": "Mark a product publishing as failed.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}",
+                "publishing_failed.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ecf252d-07aa-4350-a7f6-50820597ef53",
+          "name": "Notify that a product was unpublished from the sales channel.",
+          "request": {
+            "name": "Notify that a product was unpublished from the sales channel.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "products",
+                "{product_id}",
+                "unpublish.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff87e8e6-5e85-4025-b49c-4acc6c4dfceb",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31794483-1492-4d30-9f79-230d0b661fda",
+          "name": "Retrieve a list of orders in a shop.",
+          "request": {
+            "name": "Retrieve a list of orders in a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "orders.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eaeeea83-c757-428a-8abf-fba1ace3b31e",
+          "name": "Submit a new order.",
+          "request": {
+            "name": "Submit a new order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "orders.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external_id\": \"<string>\",\n  \"line_items\": [],\n  \"shipping_method\": 1,\n  \"address_to\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9e5fd72-e7a6-4962-a28c-c103664298d0",
+          "name": "Retrieve a specific order.",
+          "request": {
+            "name": "Retrieve a specific order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "orders",
+                "{order_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4812746f-32cf-4f43-9cd8-ca047f483e6d",
+          "name": "Submit a Printify Express order.",
+          "request": {
+            "name": "Submit a Printify Express order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "express.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_items\": [],\n  \"address_to\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7aba834c-d6f5-41b3-bd73-d3f554da20f0",
+          "name": "Calculate the shipping cost of an order.",
+          "request": {
+            "name": "Calculate the shipping cost of an order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "orders",
+                "shipping.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_items\": [],\n  \"address_to\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e3f87c0-55e6-48ff-8035-49d99f5eca5d",
+          "name": "Send an order to production.",
+          "request": {
+            "name": "Send an order to production.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "orders",
+                "{order_id}",
+                "send_to_production.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66fdb014-0f07-44d8-8a51-11b9b46f8c95",
+          "name": "Cancel an unpaid order.",
+          "request": {
+            "name": "Cancel an unpaid order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "orders",
+                "{order_id}",
+                "cancel.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6c78f7bd-179f-412a-aa4d-ec8006c2128a",
+      "name": "Uploads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b0f867e-f259-45f2-b915-7c9a2aedadd8",
+          "name": "Retrieve a list of images in the Media Library.",
+          "request": {
+            "name": "Retrieve a list of images in the Media Library.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7858f052-71ec-45a1-930a-bec88a68196a",
+          "name": "Retrieve a specific uploaded image.",
+          "request": {
+            "name": "Retrieve a specific uploaded image.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "{image_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab21a9ad-0e41-4919-8406-14f70cd1e8fa",
+          "name": "Upload an image via URL or base64-encoded contents.",
+          "request": {
+            "name": "Upload an image via URL or base64-encoded contents.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "images.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file_name\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df650093-5f2d-434e-808d-4d3ad48cdfb4",
+          "name": "Archive an uploaded image.",
+          "request": {
+            "name": "Archive an uploaded image.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "{image_id}",
+                "archive.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "38dd32ba-913b-406e-b1e1-fe417fa49da5",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4cc80757-4653-41c1-9178-ec0b9a538178",
+          "name": "Retrieve a list of webhooks configured for a shop.",
+          "request": {
+            "name": "Retrieve a list of webhooks configured for a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "webhooks.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "211836e8-e8af-46f1-8ba8-79212358bd3a",
+          "name": "Create a new webhook.",
+          "request": {
+            "name": "Create a new webhook.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "webhooks.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"order:created\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16604aca-8603-40c0-a8f4-a9ac166971cc",
+          "name": "Modify an existing webhook.",
+          "request": {
+            "name": "Modify an existing webhook.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "webhooks",
+                "{webhook_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b317de2f-930d-4769-ab8b-82d7e08d4447",
+          "name": "Delete a webhook.",
+          "request": {
+            "name": "Delete a webhook.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                "{shop_id}",
+                "webhooks",
+                "{webhook_id}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printify.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cf234762-7408-4525-a172-a427a139ebc1",
+    "name": "Printify API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant.\n\nContact Support:\n Name: Printify Merchant Support\n Url: https://developers.printify.com/",
+      "type": "text/plain"
+    }
+  }
+}
