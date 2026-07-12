@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/printify-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer
+    {token}. A User-Agent header is also required.'
+  sources:
+  - openapi/printify-openapi.yml

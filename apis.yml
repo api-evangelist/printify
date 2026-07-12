@@ -141,6 +141,14 @@ apis:
   description: Lists, creates, modifies, and deletes webhooks that deliver instant POST
     notifications to a merchant's endpoint when product, order, and shop events occur.
 common:
+- type: VulnerabilityDisclosure
+  url: security/printify-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/printify-domain-security.yml
+- type: Authentication
+  url: authentication/printify-authentication.yml
+- type: Blog
+  url: https://printify.com/feed/
 - type: GitHubOrganization
   url: https://github.com/printify
 - type: LinkedIn
