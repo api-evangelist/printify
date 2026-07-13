@@ -1,0 +1,13 @@
+{
+  "repo": "printify",
+  "feeds": [
+    {
+      "source": "https://printify.com/feed/",
+      "feed_url": "https://printify.com/feed/",
+      "title": "Printify Blog",
+      "saved": 8
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 18
+}
