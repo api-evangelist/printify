@@ -141,6 +141,8 @@ apis:
   description: Lists, creates, modifies, and deletes webhooks that deliver instant POST
     notifications to a merchant's endpoint when product, order, and shop events occur.
 common:
+- type: AgenticAccess
+  url: agentic-access/printify-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/printify-vulnerability-disclosure.yml
 - type: DomainSecurity
