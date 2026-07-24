@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: Printify Catalog Shops API
+  description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+- url: https://api.printify.com/v1
+security:
+- bearerAuth: []
+tags:
+- name: Shops
+  description: Stores connected to a Printify account.
+paths:
+  /shops.json:
+    get:
+      operationId: listShops
+      tags:
+      - Shops
+      summary: Retrieve the list of shops in a Printify account.
+      responses:
+        '200':
+          description: A list of connected shops.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shop'
+  /shops/{shop_id}/connection.json:
+    delete:
+      operationId: disconnectShop
+      tags:
+      - Shops
+      summary: Disconnect a shop from the account.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      responses:
+        '200':
+          description: The shop was disconnected.
+components:
+  schemas:
+    Shop:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        sales_channel:
+          type: string
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer {token}. A User-Agent header is also required.'

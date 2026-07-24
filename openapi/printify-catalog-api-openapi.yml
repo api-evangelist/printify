@@ -1,0 +1,251 @@
+openapi: 3.0.1
+info:
+  title: Printify Catalog API
+  description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+- url: https://api.printify.com/v1
+security:
+- bearerAuth: []
+tags:
+- name: Catalog
+  description: Blueprints, print providers, variants, and shipping in the Printify catalog.
+paths:
+  /catalog/blueprints.json:
+    get:
+      operationId: listBlueprints
+      tags:
+      - Catalog
+      summary: Retrieve a list of available blueprints.
+      responses:
+        '200':
+          description: A list of blueprints.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Blueprint'
+  /catalog/blueprints/{blueprint_id}.json:
+    get:
+      operationId: getBlueprint
+      tags:
+      - Catalog
+      summary: Retrieve a specific blueprint.
+      parameters:
+      - $ref: '#/components/parameters/BlueprintId'
+      responses:
+        '200':
+          description: A blueprint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Blueprint'
+  /catalog/blueprints/{blueprint_id}/print_providers.json:
+    get:
+      operationId: listBlueprintPrintProviders
+      tags:
+      - Catalog
+      summary: Retrieve a list of print providers for a specific blueprint.
+      parameters:
+      - $ref: '#/components/parameters/BlueprintId'
+      responses:
+        '200':
+          description: A list of print providers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintProvider'
+  /catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/variants.json:
+    get:
+      operationId: listVariants
+      tags:
+      - Catalog
+      summary: Retrieve a list of variants of a blueprint from a specific print provider.
+      parameters:
+      - $ref: '#/components/parameters/BlueprintId'
+      - $ref: '#/components/parameters/PrintProviderId'
+      responses:
+        '200':
+          description: A list of variants.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  variants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Variant'
+  /catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/shipping.json:
+    get:
+      operationId: getVariantShipping
+      tags:
+      - Catalog
+      summary: Retrieve shipping information for a blueprint from a specific print provider.
+      parameters:
+      - $ref: '#/components/parameters/BlueprintId'
+      - $ref: '#/components/parameters/PrintProviderId'
+      responses:
+        '200':
+          description: Shipping information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingInfo'
+  /catalog/print_providers.json:
+    get:
+      operationId: listPrintProviders
+      tags:
+      - Catalog
+      summary: Retrieve a list of all available print providers.
+      responses:
+        '200':
+          description: A list of print providers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintProvider'
+  /catalog/print_providers/{print_provider_id}.json:
+    get:
+      operationId: getPrintProvider
+      tags:
+      - Catalog
+      summary: Retrieve a specific print provider and the blueprints it supports.
+      parameters:
+      - $ref: '#/components/parameters/PrintProviderId'
+      responses:
+        '200':
+          description: A print provider.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintProvider'
+components:
+  parameters:
+    PrintProviderId:
+      name: print_provider_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    BlueprintId:
+      name: blueprint_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  schemas:
+    Blueprint:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+    ShippingInfo:
+      type: object
+      properties:
+        handling_time:
+          type: object
+          properties:
+            value:
+              type: integer
+            unit:
+              type: string
+        profiles:
+          type: array
+          items:
+            type: object
+            properties:
+              variant_ids:
+                type: array
+                items:
+                  type: integer
+              first_item:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                  currency:
+                    type: string
+              additional_items:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                  currency:
+                    type: string
+              countries:
+                type: array
+                items:
+                  type: string
+    PrintProvider:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        location:
+          type: object
+          properties:
+            address1:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+            region:
+              type: string
+            zip:
+              type: string
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        options:
+          type: object
+          additionalProperties: true
+        placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer {token}. A User-Agent header is also required.'

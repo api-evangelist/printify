@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: Printify Catalog Webhooks API
+  description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+- url: https://api.printify.com/v1
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+  description: Event notifications delivered to merchant endpoints.
+paths:
+  /shops/{shop_id}/webhooks.json:
+    get:
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      summary: Retrieve a list of webhooks configured for a shop.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      summary: Create a new webhook.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - topic
+              - url
+              properties:
+                topic:
+                  type: string
+                  description: Event topic, e.g. order:created, order:updated, product:publish:started.
+                url:
+                  type: string
+      responses:
+        '200':
+          description: The created webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /shops/{shop_id}/webhooks/{webhook_id}.json:
+    put:
+      operationId: updateWebhook
+      tags:
+      - Webhooks
+      summary: Modify an existing webhook.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/WebhookId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+      responses:
+        '200':
+          description: The updated webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    delete:
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      summary: Delete a webhook.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/WebhookId'
+      responses:
+        '200':
+          description: The webhook was deleted.
+components:
+  parameters:
+    WebhookId:
+      name: webhook_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        topic:
+          type: string
+        url:
+          type: string
+        shop_id:
+          type: integer
+        secret:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer {token}. A User-Agent header is also required.'

@@ -1,0 +1,277 @@
+openapi: 3.0.1
+info:
+  title: Printify Catalog Orders API
+  description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+- url: https://api.printify.com/v1
+security:
+- bearerAuth: []
+tags:
+- name: Orders
+  description: Order submission, shipping calculation, production, and cancellation.
+paths:
+  /shops/{shop_id}/orders.json:
+    get:
+      operationId: listOrders
+      tags:
+      - Orders
+      summary: Retrieve a list of orders in a shop.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: status
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+    post:
+      operationId: createOrder
+      tags:
+      - Orders
+      summary: Submit a new order.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '200':
+          description: The created order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/orders/{order_id}.json:
+    get:
+      operationId: getOrder
+      tags:
+      - Orders
+      summary: Retrieve a specific order.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: An order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/express.json:
+    post:
+      operationId: createExpressOrder
+      tags:
+      - Orders
+      summary: Submit a Printify Express order.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '200':
+          description: The created express order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/orders/shipping.json:
+    post:
+      operationId: calculateShipping
+      tags:
+      - Orders
+      summary: Calculate the shipping cost of an order.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '200':
+          description: Calculated shipping costs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  standard:
+                    type: integer
+                  express:
+                    type: integer
+                  priority:
+                    type: integer
+                  printify_express:
+                    type: integer
+                  economy:
+                    type: integer
+  /shops/{shop_id}/orders/{order_id}/send_to_production.json:
+    post:
+      operationId: sendOrderToProduction
+      tags:
+      - Orders
+      summary: Send an order to production.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: The order was sent to production.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/orders/{order_id}/cancel.json:
+    post:
+      operationId: cancelOrder
+      tags:
+      - Orders
+      summary: Cancel an unpaid order (status on-hold or payment-not-received).
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: The order was cancelled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+components:
+  schemas:
+    OrderList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        last_page:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    OrderCreate:
+      type: object
+      required:
+      - line_items
+      - address_to
+      properties:
+        external_id:
+          type: string
+        label:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              product_id:
+                type: string
+              variant_id:
+                type: integer
+              quantity:
+                type: integer
+        shipping_method:
+          type: integer
+        send_shipping_notification:
+          type: boolean
+        address_to:
+          $ref: '#/components/schemas/Address'
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        shipping_method:
+          type: integer
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              product_id:
+                type: string
+              quantity:
+                type: integer
+              variant_id:
+                type: integer
+        address_to:
+          $ref: '#/components/schemas/Address'
+        total_price:
+          type: integer
+        total_shipping:
+          type: integer
+        created_at:
+          type: string
+    Address:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        country:
+          type: string
+        region:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+  parameters:
+    OrderId:
+      name: order_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer {token}. A User-Agent header is also required.'

@@ -1,0 +1,313 @@
+openapi: 3.0.1
+info:
+  title: Printify Catalog Products API
+  description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+- url: https://api.printify.com/v1
+security:
+- bearerAuth: []
+tags:
+- name: Products
+  description: Products in a shop and their publishing lifecycle.
+paths:
+  /shops/{shop_id}/products.json:
+    get:
+      operationId: listProducts
+      tags:
+      - Products
+      summary: Retrieve a list of all products in a shop.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paginated list of products.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+    post:
+      operationId: createProduct
+      tags:
+      - Products
+      summary: Create a new product in a shop.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '200':
+          description: The created product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /shops/{shop_id}/products/{product_id}.json:
+    get:
+      operationId: getProduct
+      tags:
+      - Products
+      summary: Retrieve a specific product.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          description: A product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    put:
+      operationId: updateProduct
+      tags:
+      - Products
+      summary: Update a product.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '200':
+          description: The updated product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      operationId: deleteProduct
+      tags:
+      - Products
+      summary: Delete a product.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          description: The product was deleted.
+  /shops/{shop_id}/products/{product_id}/publish.json:
+    post:
+      operationId: publishProduct
+      tags:
+      - Products
+      summary: Publish a product to a connected sales channel.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishRequest'
+      responses:
+        '200':
+          description: Publishing was initiated.
+  /shops/{shop_id}/products/{product_id}/publishing_succeeded.json:
+    post:
+      operationId: setPublishSucceeded
+      tags:
+      - Products
+      summary: Mark a product publishing as succeeded.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                external:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    handle:
+                      type: string
+      responses:
+        '200':
+          description: Publishing status updated.
+  /shops/{shop_id}/products/{product_id}/publishing_failed.json:
+    post:
+      operationId: setPublishFailed
+      tags:
+      - Products
+      summary: Mark a product publishing as failed.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: Publishing status updated.
+  /shops/{shop_id}/products/{product_id}/unpublish.json:
+    post:
+      operationId: unpublishProduct
+      tags:
+      - Products
+      summary: Notify that a product was unpublished from the sales channel.
+      parameters:
+      - $ref: '#/components/parameters/ShopId'
+      - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          description: The product was marked as unpublished.
+components:
+  schemas:
+    ProductList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        last_page:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        blueprint_id:
+          type: integer
+        print_provider_id:
+          type: integer
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              price:
+                type: integer
+              is_enabled:
+                type: boolean
+        print_areas:
+          type: array
+          items:
+            type: object
+        visible:
+          type: boolean
+        is_locked:
+          type: boolean
+    PublishRequest:
+      type: object
+      properties:
+        title:
+          type: boolean
+        description:
+          type: boolean
+        images:
+          type: boolean
+        variants:
+          type: boolean
+        tags:
+          type: boolean
+        keyFeatures:
+          type: boolean
+        shipping_template:
+          type: boolean
+    ProductCreate:
+      type: object
+      required:
+      - title
+      - blueprint_id
+      - print_provider_id
+      - variants
+      - print_areas
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        blueprint_id:
+          type: integer
+        print_provider_id:
+          type: integer
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              price:
+                type: integer
+              is_enabled:
+                type: boolean
+        print_areas:
+          type: array
+          items:
+            type: object
+            properties:
+              variant_ids:
+                type: array
+                items:
+                  type: integer
+              placeholders:
+                type: array
+                items:
+                  type: object
+  parameters:
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer {token}. A User-Agent header is also required.'

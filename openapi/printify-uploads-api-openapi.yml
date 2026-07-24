@@ -1,0 +1,136 @@
+openapi: 3.0.1
+info:
+  title: Printify Catalog Uploads API
+  description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+- url: https://api.printify.com/v1
+security:
+- bearerAuth: []
+tags:
+- name: Uploads
+  description: Artwork uploads to the merchant Media Library.
+paths:
+  /uploads.json:
+    get:
+      operationId: listUploads
+      tags:
+      - Uploads
+      summary: Retrieve a list of images in the Media Library.
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paginated list of uploaded images.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Upload'
+  /uploads/{image_id}.json:
+    get:
+      operationId: getUpload
+      tags:
+      - Uploads
+      summary: Retrieve a specific uploaded image.
+      parameters:
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: An uploaded image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+  /uploads/images.json:
+    post:
+      operationId: uploadImage
+      tags:
+      - Uploads
+      summary: Upload an image via URL or base64-encoded contents.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - file_name
+              properties:
+                file_name:
+                  type: string
+                url:
+                  type: string
+                  description: Public URL of the image to upload.
+                contents:
+                  type: string
+                  description: Base64-encoded contents of the image to upload.
+      responses:
+        '200':
+          description: The uploaded image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+  /uploads/{image_id}/archive.json:
+    post:
+      operationId: archiveUpload
+      tags:
+      - Uploads
+      summary: Archive an uploaded image.
+      parameters:
+      - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: The image was archived.
+components:
+  parameters:
+    ImageId:
+      name: image_id
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Upload:
+      type: object
+      properties:
+        id:
+          type: string
+        file_name:
+          type: string
+        height:
+          type: integer
+        width:
+          type: integer
+        size:
+          type: integer
+        mime_type:
+          type: string
+        preview_url:
+          type: string
+        upload_time:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Personal Access Token or OAuth 2.0 access token sent as Authorization: Bearer {token}. A User-Agent header is also required.'
