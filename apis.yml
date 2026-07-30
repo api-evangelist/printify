@@ -7,7 +7,20 @@ description: Printify is a print-on-demand marketplace connecting merchants with
   shop on a merchant's behalf - browsing the catalog of blueprints and print providers,
   creating and publishing products, submitting and tracking orders, uploading artwork,
   and subscribing to webhooks.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/printify.png
 tags:
 - Print on Demand
 - Ecommerce
@@ -18,128 +31,162 @@ created: '2026-06-25'
 modified: '2026-06-25'
 specificationVersion: '0.19'
 apis:
-- aid: printify:printify-shops-api
-  name: Printify Shops API
-  tags:
-  - Shops
-  - Stores
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.printify.com/#shops
-  baseURL: https://api.printify.com/v1
-  properties:
-  - url: https://developers.printify.com/#shops
-    type: Documentation
-  - url: openapi/printify-openapi.yml
-    type: OpenAPI
-  - url: collections/printify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/printify.opencollection.json
-    type: OpenCollection
-  description: Lists the stores connected to a Printify account and disconnects a shop
-    from the account.
 - aid: printify:printify-catalog-api
   name: Printify Catalog API
+  description: Blueprints, print providers, variants, and shipping in the Printify catalog.
+  humanURL: https://developers.printify.com/#shops
+  baseURL: https://api.printify.com/v1
   tags:
   - Catalog
-  - Blueprints
-  - Print Providers
-  - Variants
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.printify.com/#catalog
-  baseURL: https://api.printify.com/v1
   properties:
-  - url: https://developers.printify.com/#catalog
-    type: Documentation
-  - url: openapi/printify-openapi.yml
-    type: OpenAPI
-  - url: collections/printify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/printify.opencollection.json
-    type: OpenCollection
-  description: Browses the Printify catalog of blueprints (base products), their print
-    providers, product variants and variant options, and shipping information available
-    for fulfillment.
-- aid: printify:printify-products-api
-  name: Printify Products API
-  tags:
-  - Products
-  - Publishing
-  - Merchandise
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.printify.com/#products
-  baseURL: https://api.printify.com/v1
-  properties:
-  - url: https://developers.printify.com/#products
-    type: Documentation
-  - url: openapi/printify-openapi.yml
-    type: OpenAPI
-  - url: collections/printify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/printify.opencollection.json
-    type: OpenCollection
-  description: Lists, creates, retrieves, updates, deletes, and publishes products in
-    a shop, including publish status callbacks (succeeded, failed, unpublish) to keep
-    a connected storefront in sync.
+  - type: OpenAPI
+    url: openapi/printify-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://developers.printify.com/#shops
+  - type: PostmanCollection
+    url: collections/printify.postman_collection.json
+  - type: OpenCollection
+    url: collections/printify.opencollection.json
+  - type: Documentation
+    url: https://developers.printify.com/#catalog
+  - type: Documentation
+    url: https://developers.printify.com/#products
+  - type: Documentation
+    url: https://developers.printify.com/#orders
+  - type: Documentation
+    url: https://developers.printify.com/#uploads
+  - type: Documentation
+    url: https://developers.printify.com/#webhooks
 - aid: printify:printify-orders-api
   name: Printify Orders API
+  description: Order submission, shipping calculation, production, and cancellation.
+  humanURL: https://developers.printify.com/#shops
+  baseURL: https://api.printify.com/v1
   tags:
   - Orders
-  - Fulfillment
-  - Shipping
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.printify.com/#orders
-  baseURL: https://api.printify.com/v1
   properties:
-  - url: https://developers.printify.com/#orders
-    type: Documentation
-  - url: openapi/printify-openapi.yml
-    type: OpenAPI
-  - url: collections/printify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/printify.opencollection.json
-    type: OpenCollection
-  description: Lists and retrieves orders, submits new orders and express orders, calculates
-    shipping costs, sends orders to production, and cancels unpaid orders.
+  - type: OpenAPI
+    url: openapi/printify-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.printify.com/#shops
+  - type: PostmanCollection
+    url: collections/printify.postman_collection.json
+  - type: OpenCollection
+    url: collections/printify.opencollection.json
+  - type: Documentation
+    url: https://developers.printify.com/#catalog
+  - type: Documentation
+    url: https://developers.printify.com/#products
+  - type: Documentation
+    url: https://developers.printify.com/#orders
+  - type: Documentation
+    url: https://developers.printify.com/#uploads
+  - type: Documentation
+    url: https://developers.printify.com/#webhooks
+- aid: printify:printify-products-api
+  name: Printify Products API
+  description: Products in a shop and their publishing lifecycle.
+  humanURL: https://developers.printify.com/#shops
+  baseURL: https://api.printify.com/v1
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/printify-products-api-openapi.yml
+  - type: Documentation
+    url: https://developers.printify.com/#shops
+  - type: PostmanCollection
+    url: collections/printify.postman_collection.json
+  - type: OpenCollection
+    url: collections/printify.opencollection.json
+  - type: Documentation
+    url: https://developers.printify.com/#catalog
+  - type: Documentation
+    url: https://developers.printify.com/#products
+  - type: Documentation
+    url: https://developers.printify.com/#orders
+  - type: Documentation
+    url: https://developers.printify.com/#uploads
+  - type: Documentation
+    url: https://developers.printify.com/#webhooks
+- aid: printify:printify-shops-api
+  name: Printify Shops API
+  description: Stores connected to a Printify account.
+  humanURL: https://developers.printify.com/#shops
+  baseURL: https://api.printify.com/v1
+  tags:
+  - Shops
+  properties:
+  - type: OpenAPI
+    url: openapi/printify-shops-api-openapi.yml
+  - type: Documentation
+    url: https://developers.printify.com/#shops
+  - type: PostmanCollection
+    url: collections/printify.postman_collection.json
+  - type: OpenCollection
+    url: collections/printify.opencollection.json
+  - type: Documentation
+    url: https://developers.printify.com/#catalog
+  - type: Documentation
+    url: https://developers.printify.com/#products
+  - type: Documentation
+    url: https://developers.printify.com/#orders
+  - type: Documentation
+    url: https://developers.printify.com/#uploads
+  - type: Documentation
+    url: https://developers.printify.com/#webhooks
 - aid: printify:printify-uploads-api
   name: Printify Uploads API
+  description: Artwork uploads to the merchant Media Library.
+  humanURL: https://developers.printify.com/#shops
+  baseURL: https://api.printify.com/v1
   tags:
   - Uploads
-  - Images
-  - Media Library
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.printify.com/#uploads
-  baseURL: https://api.printify.com/v1
   properties:
-  - url: https://developers.printify.com/#uploads
-    type: Documentation
-  - url: openapi/printify-openapi.yml
-    type: OpenAPI
-  - url: collections/printify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/printify.opencollection.json
-    type: OpenCollection
-  description: Lists and retrieves uploaded images, uploads artwork to the merchant's
-    Media Library via image URL or base64-encoded contents, and archives images.
+  - type: OpenAPI
+    url: openapi/printify-uploads-api-openapi.yml
+  - type: Documentation
+    url: https://developers.printify.com/#shops
+  - type: PostmanCollection
+    url: collections/printify.postman_collection.json
+  - type: OpenCollection
+    url: collections/printify.opencollection.json
+  - type: Documentation
+    url: https://developers.printify.com/#catalog
+  - type: Documentation
+    url: https://developers.printify.com/#products
+  - type: Documentation
+    url: https://developers.printify.com/#orders
+  - type: Documentation
+    url: https://developers.printify.com/#uploads
+  - type: Documentation
+    url: https://developers.printify.com/#webhooks
 - aid: printify:printify-webhooks-api
   name: Printify Webhooks API
+  description: Event notifications delivered to merchant endpoints.
+  humanURL: https://developers.printify.com/#shops
+  baseURL: https://api.printify.com/v1
   tags:
   - Webhooks
-  - Events
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.printify.com/#webhooks
-  baseURL: https://api.printify.com/v1
   properties:
-  - url: https://developers.printify.com/#webhooks
-    type: Documentation
-  - url: openapi/printify-openapi.yml
-    type: OpenAPI
-  - url: collections/printify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/printify.opencollection.json
-    type: OpenCollection
-  description: Lists, creates, modifies, and deletes webhooks that deliver instant POST
-    notifications to a merchant's endpoint when product, order, and shop events occur.
+  - type: OpenAPI
+    url: openapi/printify-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.printify.com/#shops
+  - type: PostmanCollection
+    url: collections/printify.postman_collection.json
+  - type: OpenCollection
+    url: collections/printify.opencollection.json
+  - type: Documentation
+    url: https://developers.printify.com/#catalog
+  - type: Documentation
+    url: https://developers.printify.com/#products
+  - type: Documentation
+    url: https://developers.printify.com/#orders
+  - type: Documentation
+    url: https://developers.printify.com/#uploads
+  - type: Documentation
+    url: https://developers.printify.com/#webhooks
 common:
 - type: AgenticAccess
   url: agentic-access/printify-agentic-access.yml
