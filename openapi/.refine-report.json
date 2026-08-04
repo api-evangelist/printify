@@ -1,0 +1,24 @@
+{
+  "provider": "printify",
+  "sources": [
+    "printify-catalog-api-openapi.yml",
+    "printify-orders-api-openapi.yml",
+    "printify-products-api-openapi.yml",
+    "printify-shops-api-openapi.yml",
+    "printify-uploads-api-openapi.yml",
+    "printify-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "printify-catalog-api-openapi.yml",
+    "printify-orders-api-openapi.yml",
+    "printify-products-api-openapi.yml",
+    "printify-shops-api-openapi.yml",
+    "printify-uploads-api-openapi.yml",
+    "printify-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

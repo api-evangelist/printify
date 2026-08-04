@@ -1,0 +1,1047 @@
+openapi: 3.0.1
+info:
+  title: Printify API
+  description: >-
+    The Printify REST API allows your application to manage a Printify shop on
+    behalf of a Printify merchant. Browse the catalog of blueprints and print
+    providers, create and publish products, submit and track orders, upload
+    artwork, and subscribe to webhooks. All requests are authenticated with a
+    Bearer token (Personal Access Token or OAuth 2.0) and must include a
+    User-Agent header.
+  termsOfService: https://printify.com/terms-of-service/
+  contact:
+    name: Printify Merchant Support
+    url: https://developers.printify.com/
+  version: '1.0'
+servers:
+  - url: https://api.printify.com/v1
+security:
+  - bearerAuth: []
+tags:
+  - name: Shops
+    description: Stores connected to a Printify account.
+  - name: Catalog
+    description: Blueprints, print providers, variants, and shipping in the Printify catalog.
+  - name: Products
+    description: Products in a shop and their publishing lifecycle.
+  - name: Orders
+    description: Order submission, shipping calculation, production, and cancellation.
+  - name: Uploads
+    description: Artwork uploads to the merchant Media Library.
+  - name: Webhooks
+    description: Event notifications delivered to merchant endpoints.
+paths:
+  /shops.json:
+    get:
+      operationId: listShops
+      tags:
+        - Shops
+      summary: Retrieve the list of shops in a Printify account.
+      responses:
+        '200':
+          description: A list of connected shops.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shop'
+  /shops/{shop_id}/connection.json:
+    delete:
+      operationId: disconnectShop
+      tags:
+        - Shops
+      summary: Disconnect a shop from the account.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      responses:
+        '200':
+          description: The shop was disconnected.
+  /catalog/blueprints.json:
+    get:
+      operationId: listBlueprints
+      tags:
+        - Catalog
+      summary: Retrieve a list of available blueprints.
+      responses:
+        '200':
+          description: A list of blueprints.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Blueprint'
+  /catalog/blueprints/{blueprint_id}.json:
+    get:
+      operationId: getBlueprint
+      tags:
+        - Catalog
+      summary: Retrieve a specific blueprint.
+      parameters:
+        - $ref: '#/components/parameters/BlueprintId'
+      responses:
+        '200':
+          description: A blueprint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Blueprint'
+  /catalog/blueprints/{blueprint_id}/print_providers.json:
+    get:
+      operationId: listBlueprintPrintProviders
+      tags:
+        - Catalog
+      summary: Retrieve a list of print providers for a specific blueprint.
+      parameters:
+        - $ref: '#/components/parameters/BlueprintId'
+      responses:
+        '200':
+          description: A list of print providers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintProvider'
+  /catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/variants.json:
+    get:
+      operationId: listVariants
+      tags:
+        - Catalog
+      summary: Retrieve a list of variants of a blueprint from a specific print provider.
+      parameters:
+        - $ref: '#/components/parameters/BlueprintId'
+        - $ref: '#/components/parameters/PrintProviderId'
+      responses:
+        '200':
+          description: A list of variants.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  variants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Variant'
+  /catalog/blueprints/{blueprint_id}/print_providers/{print_provider_id}/shipping.json:
+    get:
+      operationId: getVariantShipping
+      tags:
+        - Catalog
+      summary: Retrieve shipping information for a blueprint from a specific print provider.
+      parameters:
+        - $ref: '#/components/parameters/BlueprintId'
+        - $ref: '#/components/parameters/PrintProviderId'
+      responses:
+        '200':
+          description: Shipping information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingInfo'
+  /catalog/print_providers.json:
+    get:
+      operationId: listPrintProviders
+      tags:
+        - Catalog
+      summary: Retrieve a list of all available print providers.
+      responses:
+        '200':
+          description: A list of print providers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrintProvider'
+  /catalog/print_providers/{print_provider_id}.json:
+    get:
+      operationId: getPrintProvider
+      tags:
+        - Catalog
+      summary: Retrieve a specific print provider and the blueprints it supports.
+      parameters:
+        - $ref: '#/components/parameters/PrintProviderId'
+      responses:
+        '200':
+          description: A print provider.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrintProvider'
+  /shops/{shop_id}/products.json:
+    get:
+      operationId: listProducts
+      tags:
+        - Products
+      summary: Retrieve a list of all products in a shop.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A paginated list of products.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+    post:
+      operationId: createProduct
+      tags:
+        - Products
+      summary: Create a new product in a shop.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '200':
+          description: The created product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /shops/{shop_id}/products/{product_id}.json:
+    get:
+      operationId: getProduct
+      tags:
+        - Products
+      summary: Retrieve a specific product.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          description: A product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    put:
+      operationId: updateProduct
+      tags:
+        - Products
+      summary: Update a product.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCreate'
+      responses:
+        '200':
+          description: The updated product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      operationId: deleteProduct
+      tags:
+        - Products
+      summary: Delete a product.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          description: The product was deleted.
+  /shops/{shop_id}/products/{product_id}/publish.json:
+    post:
+      operationId: publishProduct
+      tags:
+        - Products
+      summary: Publish a product to a connected sales channel.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishRequest'
+      responses:
+        '200':
+          description: Publishing was initiated.
+  /shops/{shop_id}/products/{product_id}/publishing_succeeded.json:
+    post:
+      operationId: setPublishSucceeded
+      tags:
+        - Products
+      summary: Mark a product publishing as succeeded.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                external:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    handle:
+                      type: string
+      responses:
+        '200':
+          description: Publishing status updated.
+  /shops/{shop_id}/products/{product_id}/publishing_failed.json:
+    post:
+      operationId: setPublishFailed
+      tags:
+        - Products
+      summary: Mark a product publishing as failed.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: Publishing status updated.
+  /shops/{shop_id}/products/{product_id}/unpublish.json:
+    post:
+      operationId: unpublishProduct
+      tags:
+        - Products
+      summary: Notify that a product was unpublished from the sales channel.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          description: The product was marked as unpublished.
+  /shops/{shop_id}/orders.json:
+    get:
+      operationId: listOrders
+      tags:
+        - Orders
+      summary: Retrieve a list of orders in a shop.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of orders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+    post:
+      operationId: createOrder
+      tags:
+        - Orders
+      summary: Submit a new order.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '200':
+          description: The created order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/orders/{order_id}.json:
+    get:
+      operationId: getOrder
+      tags:
+        - Orders
+      summary: Retrieve a specific order.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: An order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/express.json:
+    post:
+      operationId: createExpressOrder
+      tags:
+        - Orders
+      summary: Submit a Printify Express order.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '200':
+          description: The created express order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/orders/shipping.json:
+    post:
+      operationId: calculateShipping
+      tags:
+        - Orders
+      summary: Calculate the shipping cost of an order.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '200':
+          description: Calculated shipping costs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  standard:
+                    type: integer
+                  express:
+                    type: integer
+                  priority:
+                    type: integer
+                  printify_express:
+                    type: integer
+                  economy:
+                    type: integer
+  /shops/{shop_id}/orders/{order_id}/send_to_production.json:
+    post:
+      operationId: sendOrderToProduction
+      tags:
+        - Orders
+      summary: Send an order to production.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: The order was sent to production.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /shops/{shop_id}/orders/{order_id}/cancel.json:
+    post:
+      operationId: cancelOrder
+      tags:
+        - Orders
+      summary: Cancel an unpaid order (status on-hold or payment-not-received).
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: The order was cancelled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /uploads.json:
+    get:
+      operationId: listUploads
+      tags:
+        - Uploads
+      summary: Retrieve a list of images in the Media Library.
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A paginated list of uploaded images.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Upload'
+  /uploads/{image_id}.json:
+    get:
+      operationId: getUpload
+      tags:
+        - Uploads
+      summary: Retrieve a specific uploaded image.
+      parameters:
+        - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: An uploaded image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+  /uploads/images.json:
+    post:
+      operationId: uploadImage
+      tags:
+        - Uploads
+      summary: Upload an image via URL or base64-encoded contents.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_name
+              properties:
+                file_name:
+                  type: string
+                url:
+                  type: string
+                  description: Public URL of the image to upload.
+                contents:
+                  type: string
+                  description: Base64-encoded contents of the image to upload.
+      responses:
+        '200':
+          description: The uploaded image.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+  /uploads/{image_id}/archive.json:
+    post:
+      operationId: archiveUpload
+      tags:
+        - Uploads
+      summary: Archive an uploaded image.
+      parameters:
+        - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          description: The image was archived.
+  /shops/{shop_id}/webhooks.json:
+    get:
+      operationId: listWebhooks
+      tags:
+        - Webhooks
+      summary: Retrieve a list of webhooks configured for a shop.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+        - Webhooks
+      summary: Create a new webhook.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - topic
+                - url
+              properties:
+                topic:
+                  type: string
+                  description: Event topic, e.g. order:created, order:updated, product:publish:started.
+                url:
+                  type: string
+      responses:
+        '200':
+          description: The created webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /shops/{shop_id}/webhooks/{webhook_id}.json:
+    put:
+      operationId: updateWebhook
+      tags:
+        - Webhooks
+      summary: Modify an existing webhook.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/WebhookId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+      responses:
+        '200':
+          description: The updated webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    delete:
+      operationId: deleteWebhook
+      tags:
+        - Webhooks
+      summary: Delete a webhook.
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+        - $ref: '#/components/parameters/WebhookId'
+      responses:
+        '200':
+          description: The webhook was deleted.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Personal Access Token or OAuth 2.0 access token sent as
+        Authorization: Bearer {token}. A User-Agent header is also required.
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    BlueprintId:
+      name: blueprint_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    PrintProviderId:
+      name: print_provider_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      schema:
+        type: string
+    OrderId:
+      name: order_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ImageId:
+      name: image_id
+      in: path
+      required: true
+      schema:
+        type: string
+    WebhookId:
+      name: webhook_id
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Shop:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        sales_channel:
+          type: string
+    Blueprint:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+    PrintProvider:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        location:
+          type: object
+          properties:
+            address1:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+            region:
+              type: string
+            zip:
+              type: string
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        options:
+          type: object
+          additionalProperties: true
+        placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
+    ShippingInfo:
+      type: object
+      properties:
+        handling_time:
+          type: object
+          properties:
+            value:
+              type: integer
+            unit:
+              type: string
+        profiles:
+          type: array
+          items:
+            type: object
+            properties:
+              variant_ids:
+                type: array
+                items:
+                  type: integer
+              first_item:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                  currency:
+                    type: string
+              additional_items:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                  currency:
+                    type: string
+              countries:
+                type: array
+                items:
+                  type: string
+    ProductList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        last_page:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        blueprint_id:
+          type: integer
+        print_provider_id:
+          type: integer
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              price:
+                type: integer
+              is_enabled:
+                type: boolean
+        print_areas:
+          type: array
+          items:
+            type: object
+        visible:
+          type: boolean
+        is_locked:
+          type: boolean
+    ProductCreate:
+      type: object
+      required:
+        - title
+        - blueprint_id
+        - print_provider_id
+        - variants
+        - print_areas
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        blueprint_id:
+          type: integer
+        print_provider_id:
+          type: integer
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              price:
+                type: integer
+              is_enabled:
+                type: boolean
+        print_areas:
+          type: array
+          items:
+            type: object
+            properties:
+              variant_ids:
+                type: array
+                items:
+                  type: integer
+              placeholders:
+                type: array
+                items:
+                  type: object
+    PublishRequest:
+      type: object
+      properties:
+        title:
+          type: boolean
+        description:
+          type: boolean
+        images:
+          type: boolean
+        variants:
+          type: boolean
+        tags:
+          type: boolean
+        keyFeatures:
+          type: boolean
+        shipping_template:
+          type: boolean
+    OrderList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        last_page:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+        shipping_method:
+          type: integer
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              product_id:
+                type: string
+              quantity:
+                type: integer
+              variant_id:
+                type: integer
+        address_to:
+          $ref: '#/components/schemas/Address'
+        total_price:
+          type: integer
+        total_shipping:
+          type: integer
+        created_at:
+          type: string
+    OrderCreate:
+      type: object
+      required:
+        - line_items
+        - address_to
+      properties:
+        external_id:
+          type: string
+        label:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              product_id:
+                type: string
+              variant_id:
+                type: integer
+              quantity:
+                type: integer
+        shipping_method:
+          type: integer
+        send_shipping_notification:
+          type: boolean
+        address_to:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        country:
+          type: string
+        region:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        zip:
+          type: string
+    Upload:
+      type: object
+      properties:
+        id:
+          type: string
+        file_name:
+          type: string
+        height:
+          type: integer
+        width:
+          type: integer
+        size:
+          type: integer
+        mime_type:
+          type: string
+        preview_url:
+          type: string
+        upload_time:
+          type: string
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        topic:
+          type: string
+        url:
+          type: string
+        shop_id:
+          type: integer
+        secret:
+          type: string

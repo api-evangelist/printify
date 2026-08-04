@@ -5,9 +5,10 @@
       "source": "https://printify.com/feed/",
       "feed_url": "https://printify.com/feed/",
       "title": "Printify Blog",
-      "saved": 8
+      "saved": 0,
+      "error": "parse_failed"
     }
   ],
-  "fetched": "2026-07-11T11:43:46Z",
+  "fetched": "2026-08-01T15:38:58Z",
   "post_count": 18
 }
