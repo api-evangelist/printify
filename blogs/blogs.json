@@ -6,9 +6,9 @@
       "feed_url": "https://printify.com/feed/",
       "title": "Printify Blog",
       "saved": 0,
-      "error": "parse_failed"
+      "error": "fetch_failed: HTTPError"
     }
   ],
-  "fetched": "2026-08-06T13:56:59Z",
+  "fetched": "2026-08-15T12:11:08Z",
   "post_count": 18
 }
