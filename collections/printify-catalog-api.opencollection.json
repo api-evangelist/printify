@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Printify Catalog API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of available blueprints.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints.json"
+          },
+          "docs": "Retrieve a list of available blueprints."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific blueprint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/:blueprint_id.json",
+            "params": [
+              {
+                "name": "blueprint_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific blueprint."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of print providers for a specific blueprint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/:blueprint_id/print_providers.json",
+            "params": [
+              {
+                "name": "blueprint_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of print providers for a specific blueprint."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of variants of a blueprint from a specific print provider.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/:blueprint_id/print_providers/:print_provider_id/variants.json",
+            "params": [
+              {
+                "name": "blueprint_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "print_provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of variants of a blueprint from a specific print provider."
+        },
+        {
+          "info": {
+            "name": "Retrieve shipping information for a blueprint from a specific print provider.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/blueprints/:blueprint_id/print_providers/:print_provider_id/shipping.json",
+            "params": [
+              {
+                "name": "blueprint_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "print_provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve shipping information for a blueprint from a specific print provider."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of all available print providers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/print_providers.json"
+          },
+          "docs": "Retrieve a list of all available print providers."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific print provider and the blueprints it supports.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/catalog/print_providers/:print_provider_id.json",
+            "params": [
+              {
+                "name": "print_provider_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific print provider and the blueprints it supports."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

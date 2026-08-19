@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Printify Catalog Products API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of all products in a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all products in a shop."
+        },
+        {
+          "info": {
+            "name": "Create a new product in a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new product in a shop."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific product."
+        },
+        {
+          "info": {
+            "name": "Update a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a product."
+        },
+        {
+          "info": {
+            "name": "Delete a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a product."
+        },
+        {
+          "info": {
+            "name": "Publish a product to a connected sales channel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id/publish.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a product to a connected sales channel."
+        },
+        {
+          "info": {
+            "name": "Mark a product publishing as succeeded.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id/publishing_succeeded.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark a product publishing as succeeded."
+        },
+        {
+          "info": {
+            "name": "Mark a product publishing as failed.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id/publishing_failed.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark a product publishing as failed."
+        },
+        {
+          "info": {
+            "name": "Notify that a product was unpublished from the sales channel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/:shop_id/products/:product_id/unpublish.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Notify that a product was unpublished from the sales channel."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

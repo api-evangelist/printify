@@ -1,0 +1,1065 @@
+{
+  "item": [
+    {
+      "id": "10ecc1f5-c672-4585-90c9-dd3283e84933",
+      "name": "Products",
+      "description": {
+        "content": "Products in a shop and their publishing lifecycle.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "394b3c91-44f7-48e4-94cb-7110392bfd32",
+          "name": "Retrieve a list of all products in a shop.",
+          "request": {
+            "name": "Retrieve a list of all products in a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "504bf944-17f7-4e78-8fd7-e4af5fa6a420",
+              "name": "A paginated list of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"current_page\": 3131,\n  \"last_page\": 8444,\n  \"total\": 7017,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"blueprint_id\": 4794,\n      \"print_provider_id\": 9888,\n      \"variants\": [\n        {\n          \"id\": 2074,\n          \"price\": 2865,\n          \"is_enabled\": false\n        },\n        {\n          \"id\": 9844,\n          \"price\": 6033,\n          \"is_enabled\": false\n        }\n      ],\n      \"visible\": false,\n      \"is_locked\": true\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"blueprint_id\": 868,\n      \"print_provider_id\": 3804,\n      \"variants\": [\n        {\n          \"id\": 4506,\n          \"price\": 8744,\n          \"is_enabled\": true\n        },\n        {\n          \"id\": 9458,\n          \"price\": 8490,\n          \"is_enabled\": true\n        }\n      ],\n      \"visible\": false,\n      \"is_locked\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0addfcb-488f-4d1a-be8b-bde00d54d62b",
+          "name": "Create a new product in a shop.",
+          "request": {
+            "name": "Create a new product in a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"blueprint_id\": \"<integer>\",\n  \"print_provider_id\": \"<integer>\",\n  \"variants\": [\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    }\n  ],\n  \"print_areas\": [\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16fb93f4-d64f-4cce-9540-fb75fb8bda33",
+              "name": "The created product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"blueprint_id\": \"<integer>\",\n  \"print_provider_id\": \"<integer>\",\n  \"variants\": [\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    }\n  ],\n  \"print_areas\": [\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"blueprint_id\": 4913,\n  \"print_provider_id\": 1787,\n  \"variants\": [\n    {\n      \"id\": 2752,\n      \"price\": 6163,\n      \"is_enabled\": false\n    },\n    {\n      \"id\": 241,\n      \"price\": 9650,\n      \"is_enabled\": false\n    }\n  ],\n  \"visible\": false,\n  \"is_locked\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27b83e07-7ea0-4874-8f87-08eb37ddd466",
+          "name": "Retrieve a specific product.",
+          "request": {
+            "name": "Retrieve a specific product.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                "{{product_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63e694c0-3c0c-4f33-b98e-4b7132ada74b",
+              "name": "A product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    "{{product_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"blueprint_id\": 4913,\n  \"print_provider_id\": 1787,\n  \"variants\": [\n    {\n      \"id\": 2752,\n      \"price\": 6163,\n      \"is_enabled\": false\n    },\n    {\n      \"id\": 241,\n      \"price\": 9650,\n      \"is_enabled\": false\n    }\n  ],\n  \"visible\": false,\n  \"is_locked\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "556f9135-1de1-4ad8-8ed3-01919ffba199",
+          "name": "Update a product.",
+          "request": {
+            "name": "Update a product.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                "{{product_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"blueprint_id\": \"<integer>\",\n  \"print_provider_id\": \"<integer>\",\n  \"variants\": [\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    }\n  ],\n  \"print_areas\": [\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bc2fd15-8e48-44e4-8ebc-a67f96357806",
+              "name": "The updated product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    "{{product_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"blueprint_id\": \"<integer>\",\n  \"print_provider_id\": \"<integer>\",\n  \"variants\": [\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"price\": \"<integer>\",\n      \"is_enabled\": \"<boolean>\"\n    }\n  ],\n  \"print_areas\": [\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    },\n    {\n      \"variant_ids\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"placeholders\": [\n        \"<object>\",\n        \"<object>\"\n      ]\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"blueprint_id\": 4913,\n  \"print_provider_id\": 1787,\n  \"variants\": [\n    {\n      \"id\": 2752,\n      \"price\": 6163,\n      \"is_enabled\": false\n    },\n    {\n      \"id\": 241,\n      \"price\": 9650,\n      \"is_enabled\": false\n    }\n  ],\n  \"visible\": false,\n  \"is_locked\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d4d3298-9da0-4e97-b33b-7b01dbb8279d",
+          "name": "Delete a product.",
+          "request": {
+            "name": "Delete a product.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                "{{product_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbe417ec-823b-402a-a055-17cedfc5689b",
+              "name": "The product was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    "{{product_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74241db4-fe79-4fdb-a657-fa464e6c4c6a",
+          "name": "Publish a product to a connected sales channel.",
+          "request": {
+            "name": "Publish a product to a connected sales channel.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                ":product_id",
+                "publish.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<boolean>\",\n  \"description\": \"<boolean>\",\n  \"images\": \"<boolean>\",\n  \"variants\": \"<boolean>\",\n  \"tags\": \"<boolean>\",\n  \"keyFeatures\": \"<boolean>\",\n  \"shipping_template\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8de3efaf-dec6-4701-a046-e4a209c4eeab",
+              "name": "Publishing was initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    ":product_id",
+                    "publish.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<boolean>\",\n  \"description\": \"<boolean>\",\n  \"images\": \"<boolean>\",\n  \"variants\": \"<boolean>\",\n  \"tags\": \"<boolean>\",\n  \"keyFeatures\": \"<boolean>\",\n  \"shipping_template\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06bf2776-7e96-405b-9edf-2827fbd59eab",
+          "name": "Mark a product publishing as succeeded.",
+          "request": {
+            "name": "Mark a product publishing as succeeded.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                ":product_id",
+                "publishing_succeeded.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external\": {\n    \"id\": \"<string>\",\n    \"handle\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6275e046-3905-4c6f-b95b-30c9781d328c",
+              "name": "Publishing status updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    ":product_id",
+                    "publishing_succeeded.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external\": {\n    \"id\": \"<string>\",\n    \"handle\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3fb944a-c541-4dd8-9afe-9ea18ba35a8c",
+          "name": "Mark a product publishing as failed.",
+          "request": {
+            "name": "Mark a product publishing as failed.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                ":product_id",
+                "publishing_failed.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "323d215d-4b07-46bb-b2d9-9adcb045b6ef",
+              "name": "Publishing status updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    ":product_id",
+                    "publishing_failed.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b50ccb6-c43b-4ba4-b932-f083148ece59",
+          "name": "Notify that a product was unpublished from the sales channel.",
+          "request": {
+            "name": "Notify that a product was unpublished from the sales channel.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "products",
+                ":product_id",
+                "unpublish.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "product_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19a9568a-e4c5-416e-a18e-33eb026be5a2",
+              "name": "The product was marked as unpublished.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "products",
+                    ":product_id",
+                    "unpublish.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "product_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printify.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "product_id"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "55c86bf2-0f15-4502-a2f6-0b611024411c",
+    "name": "Printify Catalog Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.\n\nContact Support:\n Name: Printify Merchant Support",
+      "type": "text/plain"
+    }
+  }
+}

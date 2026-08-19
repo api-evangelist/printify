@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Printify Catalog Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of webhooks configured for a shop.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/shops/:shop_id/webhooks.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of webhooks configured for a shop."
+        },
+        {
+          "info": {
+            "name": "Create a new webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/shops/:shop_id/webhooks.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook."
+        },
+        {
+          "info": {
+            "name": "Modify an existing webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.printify.com/v1/shops/:shop_id/webhooks/:webhook_id.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing webhook."
+        },
+        {
+          "info": {
+            "name": "Delete a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.printify.com/v1/shops/:shop_id/webhooks/:webhook_id.json",
+            "params": [
+              {
+                "name": "shop_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a webhook."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Printify Catalog Uploads API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of images in the Media Library.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/uploads.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of images in the Media Library."
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific uploaded image.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.printify.com/v1/uploads/:image_id.json",
+            "params": [
+              {
+                "name": "image_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific uploaded image."
+        },
+        {
+          "info": {
+            "name": "Upload an image via URL or base64-encoded contents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/uploads/images.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload an image via URL or base64-encoded contents."
+        },
+        {
+          "info": {
+            "name": "Archive an uploaded image.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.printify.com/v1/uploads/:image_id/archive.json",
+            "params": [
+              {
+                "name": "image_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive an uploaded image."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

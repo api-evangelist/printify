@@ -1,0 +1,406 @@
+{
+  "item": [
+    {
+      "id": "f663ce98-f072-4e21-b149-2b50d9ddd273",
+      "name": "Uploads",
+      "description": {
+        "content": "Artwork uploads to the merchant Media Library.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "192d7a48-0e12-4388-b741-70179756e031",
+          "name": "Retrieve a list of images in the Media Library.",
+          "request": {
+            "name": "Retrieve a list of images in the Media Library.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44987a48-66ea-4d08-876a-c3498080900c",
+              "name": "A paginated list of uploaded images.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"current_page\": 2227,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"file_name\": \"string\",\n      \"height\": 4342,\n      \"width\": 1278,\n      \"size\": 9120,\n      \"mime_type\": \"string\",\n      \"preview_url\": \"string\",\n      \"upload_time\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"file_name\": \"string\",\n      \"height\": 5666,\n      \"width\": 875,\n      \"size\": 3273,\n      \"mime_type\": \"string\",\n      \"preview_url\": \"string\",\n      \"upload_time\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2f84d4d-b91c-4627-8bb1-acb96db25663",
+          "name": "Retrieve a specific uploaded image.",
+          "request": {
+            "name": "Retrieve a specific uploaded image.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "{{image_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d48e35e4-cccc-4666-ab26-e177a74e3743",
+              "name": "An uploaded image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    "{{image_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"file_name\": \"string\",\n  \"height\": 9312,\n  \"width\": 9570,\n  \"size\": 3495,\n  \"mime_type\": \"string\",\n  \"preview_url\": \"string\",\n  \"upload_time\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94c19206-9126-44ba-bbe4-d2e07f341147",
+          "name": "Upload an image via URL or base64-encoded contents.",
+          "request": {
+            "name": "Upload an image via URL or base64-encoded contents.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "images.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file_name\": \"<string>\",\n  \"url\": \"<string>\",\n  \"contents\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ae0fc7c-2c4e-445a-8194-a73c1c59a368",
+              "name": "The uploaded image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    "images.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file_name\": \"<string>\",\n  \"url\": \"<string>\",\n  \"contents\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"file_name\": \"string\",\n  \"height\": 9312,\n  \"width\": 9570,\n  \"size\": 3495,\n  \"mime_type\": \"string\",\n  \"preview_url\": \"string\",\n  \"upload_time\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc8a3cea-2dd4-4da3-9d26-072e798eecc8",
+          "name": "Archive an uploaded image.",
+          "request": {
+            "name": "Archive an uploaded image.",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                ":image_id",
+                "archive.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "image_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c82a9b79-1935-4de8-ab70-8df0560818de",
+              "name": "The image was archived.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    ":image_id",
+                    "archive.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "image_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printify.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "image_id"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "902fd14b-f915-410e-a6dd-e4a8a124d0d4",
+    "name": "Printify Catalog Uploads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.\n\nContact Support:\n Name: Printify Merchant Support",
+      "type": "text/plain"
+    }
+  }
+}

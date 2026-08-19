@@ -1,0 +1,848 @@
+{
+  "item": [
+    {
+      "id": "81c27f35-837b-4c5e-a5d9-6b17e0ad46dd",
+      "name": "Orders",
+      "description": {
+        "content": "Order submission, shipping calculation, production, and cancellation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2dad48a4-b6fe-493b-aab8-18835aaca4fd",
+          "name": "Retrieve a list of orders in a shop.",
+          "request": {
+            "name": "Retrieve a list of orders in a shop.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "orders.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "600befc5-6d37-4ae3-abe0-41304401a58c",
+              "name": "A paginated list of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "orders.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"current_page\": 3415,\n  \"last_page\": 2072,\n  \"total\": 977,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"status\": \"string\",\n      \"shipping_method\": 3660,\n      \"line_items\": [\n        {\n          \"product_id\": \"string\",\n          \"quantity\": 2365,\n          \"variant_id\": 7160\n        },\n        {\n          \"product_id\": \"string\",\n          \"quantity\": 8930,\n          \"variant_id\": 7161\n        }\n      ],\n      \"address_to\": {\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"country\": \"string\",\n        \"region\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"zip\": \"string\"\n      },\n      \"total_price\": 353,\n      \"total_shipping\": 5297,\n      \"created_at\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"status\": \"string\",\n      \"shipping_method\": 4309,\n      \"line_items\": [\n        {\n          \"product_id\": \"string\",\n          \"quantity\": 9851,\n          \"variant_id\": 6842\n        },\n        {\n          \"product_id\": \"string\",\n          \"quantity\": 3226,\n          \"variant_id\": 5419\n        }\n      ],\n      \"address_to\": {\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"email\": \"string\",\n        \"phone\": \"string\",\n        \"country\": \"string\",\n        \"region\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"zip\": \"string\"\n      },\n      \"total_price\": 1444,\n      \"total_shipping\": 429,\n      \"created_at\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de48a1af-6e89-4575-af4c-d42ba4229305",
+          "name": "Submit a new order.",
+          "request": {
+            "name": "Submit a new order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "orders.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"external_id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"shipping_method\": \"<integer>\",\n  \"send_shipping_notification\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4c254f3-7ba6-48a3-a125-55aa44561e33",
+              "name": "The created order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "orders.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"external_id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"shipping_method\": \"<integer>\",\n  \"send_shipping_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"shipping_method\": 764,\n  \"line_items\": [\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 6159,\n      \"variant_id\": 2099\n    },\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 5794,\n      \"variant_id\": 6225\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"total_price\": 5348,\n  \"total_shipping\": 8635,\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f236aef-d388-4f66-90ba-70185eb2362c",
+          "name": "Retrieve a specific order.",
+          "request": {
+            "name": "Retrieve a specific order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "orders",
+                "{{order_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09d09781-e161-4e7e-9108-9e66e14f01c7",
+              "name": "An order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "orders",
+                    "{{order_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"shipping_method\": 764,\n  \"line_items\": [\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 6159,\n      \"variant_id\": 2099\n    },\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 5794,\n      \"variant_id\": 6225\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"total_price\": 5348,\n  \"total_shipping\": 8635,\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4f2700c-06d7-4c36-b119-cb340fe73d36",
+          "name": "Submit a Printify Express order.",
+          "request": {
+            "name": "Submit a Printify Express order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "express.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"external_id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"shipping_method\": \"<integer>\",\n  \"send_shipping_notification\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "083b3a80-8deb-430c-9574-3fea6ea1f7aa",
+              "name": "The created express order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "express.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"external_id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"shipping_method\": \"<integer>\",\n  \"send_shipping_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"shipping_method\": 764,\n  \"line_items\": [\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 6159,\n      \"variant_id\": 2099\n    },\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 5794,\n      \"variant_id\": 6225\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"total_price\": 5348,\n  \"total_shipping\": 8635,\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16f29174-cd4a-4cb1-8624-f5235867244f",
+          "name": "Calculate the shipping cost of an order.",
+          "request": {
+            "name": "Calculate the shipping cost of an order.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "orders",
+                "shipping.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"external_id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"shipping_method\": \"<integer>\",\n  \"send_shipping_notification\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "655798a9-bbc3-4569-a823-023bd37e7bd3",
+              "name": "Calculated shipping costs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "orders",
+                    "shipping.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"variant_id\": \"<integer>\",\n      \"quantity\": \"<integer>\"\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"external_id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"shipping_method\": \"<integer>\",\n  \"send_shipping_notification\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"standard\": 8448,\n  \"express\": 5897,\n  \"priority\": 925,\n  \"printify_express\": 5443,\n  \"economy\": 2725\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f416a2c3-37cc-470d-844f-77acfd51b232",
+          "name": "Send an order to production.",
+          "request": {
+            "name": "Send an order to production.",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "orders",
+                ":order_id",
+                "send_to_production.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a2f0773-e50c-4716-9a71-782c428b48aa",
+              "name": "The order was sent to production.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "orders",
+                    ":order_id",
+                    "send_to_production.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"shipping_method\": 764,\n  \"line_items\": [\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 6159,\n      \"variant_id\": 2099\n    },\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 5794,\n      \"variant_id\": 6225\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"total_price\": 5348,\n  \"total_shipping\": 8635,\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c608e09-a6af-4012-a331-5cdb3ca85abf",
+          "name": "Cancel an unpaid order (status on-hold or payment-not-received).",
+          "request": {
+            "name": "Cancel an unpaid order (status on-hold or payment-not-received).",
+            "description": {},
+            "url": {
+              "path": [
+                "shops",
+                ":shop_id",
+                "orders",
+                ":order_id",
+                "cancel.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "shop_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5862e0d-480c-4cee-8199-c0abb606652b",
+              "name": "The order was cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shops",
+                    ":shop_id",
+                    "orders",
+                    ":order_id",
+                    "cancel.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "shop_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"shipping_method\": 764,\n  \"line_items\": [\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 6159,\n      \"variant_id\": 2099\n    },\n    {\n      \"product_id\": \"string\",\n      \"quantity\": 5794,\n      \"variant_id\": 6225\n    }\n  ],\n  \"address_to\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"country\": \"<string>\",\n    \"region\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"total_price\": 5348,\n  \"total_shipping\": 8635,\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printify.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "order_id"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "03762185-6c81-4d8a-9c63-ef3497965cc7",
+    "name": "Printify Catalog Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.\n\nContact Support:\n Name: Printify Merchant Support",
+      "type": "text/plain"
+    }
+  }
+}

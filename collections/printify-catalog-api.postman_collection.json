@@ -1,0 +1,700 @@
+{
+  "item": [
+    {
+      "id": "a87a754d-8cdb-44ef-8e35-985603d098b3",
+      "name": "Catalog",
+      "description": {
+        "content": "Blueprints, print providers, variants, and shipping in the Printify catalog.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b1778bc-8db9-482f-9fd3-0535f236af00",
+          "name": "Retrieve a list of available blueprints.",
+          "request": {
+            "name": "Retrieve a list of available blueprints.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5abdf626-5594-4682-8f53-f96a2acb9a80",
+              "name": "A list of blueprints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "blueprints.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1210,\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"images\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"id\": 5421,\n    \"title\": \"string\",\n    \"description\": \"string\",\n    \"brand\": \"string\",\n    \"model\": \"string\",\n    \"images\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e1aa87f-79a0-4601-9f2e-930980c44403",
+          "name": "Retrieve a specific blueprint.",
+          "request": {
+            "name": "Retrieve a specific blueprint.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                "{{blueprint_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "386c06b5-1827-4485-a9c4-5edde79abdf0",
+              "name": "A blueprint.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "blueprints",
+                    "{{blueprint_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5990,\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"brand\": \"string\",\n  \"model\": \"string\",\n  \"images\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc081482-dff9-4be0-ae87-3bdf85be02ae",
+          "name": "Retrieve a list of print providers for a specific blueprint.",
+          "request": {
+            "name": "Retrieve a list of print providers for a specific blueprint.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                ":blueprint_id",
+                "print_providers.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "blueprint_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9480dec3-d3f1-4c69-a1b3-ac61b013f984",
+              "name": "A list of print providers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "blueprints",
+                    ":blueprint_id",
+                    "print_providers.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "blueprint_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9246,\n    \"title\": \"string\",\n    \"location\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"region\": \"string\",\n      \"zip\": \"string\"\n    }\n  },\n  {\n    \"id\": 6126,\n    \"title\": \"string\",\n    \"location\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"region\": \"string\",\n      \"zip\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b63192eb-cb60-4269-bc4b-129a2117751b",
+          "name": "Retrieve a list of variants of a blueprint from a specific print provider.",
+          "request": {
+            "name": "Retrieve a list of variants of a blueprint from a specific print provider.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                ":blueprint_id",
+                "print_providers",
+                ":print_provider_id",
+                "variants.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "blueprint_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "print_provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4652c1a5-cd27-454d-a9f4-86ac2c31116b",
+              "name": "A list of variants.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "blueprints",
+                    ":blueprint_id",
+                    "print_providers",
+                    ":print_provider_id",
+                    "variants.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "blueprint_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "print_provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6014,\n  \"title\": \"string\",\n  \"variants\": [\n    {\n      \"id\": 9676,\n      \"title\": \"string\",\n      \"options\": {\n        \"key_0\": 3830.4835268975644\n      },\n      \"placeholders\": [\n        {\n          \"position\": \"string\",\n          \"height\": 7522,\n          \"width\": 7207\n        },\n        {\n          \"position\": \"string\",\n          \"height\": 4299,\n          \"width\": 2225\n        }\n      ]\n    },\n    {\n      \"id\": 9614,\n      \"title\": \"string\",\n      \"options\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      },\n      \"placeholders\": [\n        {\n          \"position\": \"string\",\n          \"height\": 2831,\n          \"width\": 4663\n        },\n        {\n          \"position\": \"string\",\n          \"height\": 8064,\n          \"width\": 2196\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af3bc772-0d09-464f-8a85-1832c497331a",
+          "name": "Retrieve shipping information for a blueprint from a specific print provider.",
+          "request": {
+            "name": "Retrieve shipping information for a blueprint from a specific print provider.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "blueprints",
+                ":blueprint_id",
+                "print_providers",
+                ":print_provider_id",
+                "shipping.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "blueprint_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "print_provider_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96ad43ca-e4b2-4223-9007-932ba4ec2763",
+              "name": "Shipping information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "blueprints",
+                    ":blueprint_id",
+                    "print_providers",
+                    ":print_provider_id",
+                    "shipping.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "blueprint_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "print_provider_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"handling_time\": {\n    \"value\": 2433,\n    \"unit\": \"string\"\n  },\n  \"profiles\": [\n    {\n      \"variant_ids\": [\n        7966,\n        3067\n      ],\n      \"first_item\": {\n        \"cost\": 3893,\n        \"currency\": \"string\"\n      },\n      \"additional_items\": {\n        \"cost\": 8430,\n        \"currency\": \"string\"\n      },\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"variant_ids\": [\n        2039,\n        5770\n      ],\n      \"first_item\": {\n        \"cost\": 8990,\n        \"currency\": \"string\"\n      },\n      \"additional_items\": {\n        \"cost\": 2622,\n        \"currency\": \"string\"\n      },\n      \"countries\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "838139aa-3546-487f-9b43-56a199b9b72d",
+          "name": "Retrieve a list of all available print providers.",
+          "request": {
+            "name": "Retrieve a list of all available print providers.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "print_providers.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5c1784f-19e1-4993-ba2a-2ba27342564d",
+              "name": "A list of print providers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "print_providers.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 9246,\n    \"title\": \"string\",\n    \"location\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"region\": \"string\",\n      \"zip\": \"string\"\n    }\n  },\n  {\n    \"id\": 6126,\n    \"title\": \"string\",\n    \"location\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"region\": \"string\",\n      \"zip\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42867031-0909-4f70-9fcc-c663d2242a5e",
+          "name": "Retrieve a specific print provider and the blueprints it supports.",
+          "request": {
+            "name": "Retrieve a specific print provider and the blueprints it supports.",
+            "description": {},
+            "url": {
+              "path": [
+                "catalog",
+                "print_providers",
+                "{{print_provider_id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b08508d-6658-4610-af23-952adb475648",
+              "name": "A print provider.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "print_providers",
+                    "{{print_provider_id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6706,\n  \"title\": \"string\",\n  \"location\": {\n    \"address1\": \"string\",\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"region\": \"string\",\n    \"zip\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.printify.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "blueprint_id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "print_provider_id"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78edd1af-7506-42fe-87e4-2b1497567951",
+    "name": "Printify Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.\n\nContact Support:\n Name: Printify Merchant Support",
+      "type": "text/plain"
+    }
+  }
+}
