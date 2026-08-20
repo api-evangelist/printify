@@ -23,6 +23,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/printify.png
 tags:
 - Print on Demand
+- E-Commerce
+- Marketplace
+- Fulfillment
+- Merchandise
+tags_raw:
+- Print on Demand
 - Ecommerce
 - Marketplace
 - Fulfillment
@@ -63,6 +69,8 @@ apis:
   humanURL: https://developers.printify.com/#shops
   baseURL: https://api.printify.com/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -89,6 +97,8 @@ apis:
   humanURL: https://developers.printify.com/#shops
   baseURL: https://api.printify.com/v1
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -167,6 +177,8 @@ apis:
   humanURL: https://developers.printify.com/#shops
   baseURL: https://api.printify.com/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
