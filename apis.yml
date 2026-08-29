@@ -212,6 +212,9 @@ apis:
   - type: Documentation
     url: https://developers.printify.com/#webhooks
 common:
+- type: CapabilityMap
+  url: capabilities/printify-capability-edges.yml
+  name: Printify Business Capability Map
 - type: AgenticAccess
   url: agentic-access/printify-agentic-access.yml
 - type: VulnerabilityDisclosure
