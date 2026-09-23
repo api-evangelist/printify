@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Printify Catalog Products API
+  title: Printify Products API
   description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
   termsOfService: https://printify.com/terms-of-service/
   contact:
@@ -20,7 +20,7 @@ paths:
       operationId: listProducts
       tags:
       - Products
-      summary: Retrieve a list of all products in a shop.
+      summary: Retrieve a list of all products in a shop
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - name: page
@@ -42,7 +42,7 @@ paths:
       operationId: createProduct
       tags:
       - Products
-      summary: Create a new product in a shop.
+      summary: Create a new product in a shop
       parameters:
       - $ref: '#/components/parameters/ShopId'
       requestBody:
@@ -63,7 +63,7 @@ paths:
       operationId: getProduct
       tags:
       - Products
-      summary: Retrieve a specific product.
+      summary: Retrieve a specific product
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -78,7 +78,7 @@ paths:
       operationId: updateProduct
       tags:
       - Products
-      summary: Update a product.
+      summary: Update a product
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -99,7 +99,7 @@ paths:
       operationId: deleteProduct
       tags:
       - Products
-      summary: Delete a product.
+      summary: Delete a product
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -111,7 +111,7 @@ paths:
       operationId: publishProduct
       tags:
       - Products
-      summary: Publish a product to a connected sales channel.
+      summary: Publish a product to a connected sales channel
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -129,7 +129,7 @@ paths:
       operationId: setPublishSucceeded
       tags:
       - Products
-      summary: Mark a product publishing as succeeded.
+      summary: Mark a product publishing as succeeded
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -155,7 +155,7 @@ paths:
       operationId: setPublishFailed
       tags:
       - Products
-      summary: Mark a product publishing as failed.
+      summary: Mark a product publishing as failed
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -176,7 +176,7 @@ paths:
       operationId: unpublishProduct
       tags:
       - Products
-      summary: Notify that a product was unpublished from the sales channel.
+      summary: Notify that a product was unpublished from the sales channel
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/ProductId'
@@ -185,6 +185,23 @@ paths:
           description: The product was marked as unpublished.
 components:
   schemas:
+    PublishRequest:
+      type: object
+      properties:
+        title:
+          type: boolean
+        description:
+          type: boolean
+        images:
+          type: boolean
+        variants:
+          type: boolean
+        tags:
+          type: boolean
+        keyFeatures:
+          type: boolean
+        shipping_template:
+          type: boolean
     ProductList:
       type: object
       properties:
@@ -234,23 +251,6 @@ components:
           type: boolean
         is_locked:
           type: boolean
-    PublishRequest:
-      type: object
-      properties:
-        title:
-          type: boolean
-        description:
-          type: boolean
-        images:
-          type: boolean
-        variants:
-          type: boolean
-        tags:
-          type: boolean
-        keyFeatures:
-          type: boolean
-        shipping_template:
-          type: boolean
     ProductCreate:
       type: object
       required:
@@ -293,18 +293,18 @@ components:
                 items:
                   type: object
   parameters:
-    ProductId:
-      name: product_id
-      in: path
-      required: true
-      schema:
-        type: string
     ShopId:
       name: shop_id
       in: path
       required: true
       schema:
         type: integer
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

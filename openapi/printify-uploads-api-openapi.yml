@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Printify Catalog Uploads API
+  title: Printify Uploads API
   description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
   termsOfService: https://printify.com/terms-of-service/
   contact:
@@ -20,7 +20,7 @@ paths:
       operationId: listUploads
       tags:
       - Uploads
-      summary: Retrieve a list of images in the Media Library.
+      summary: Retrieve a list of images in the Media Library
       parameters:
       - name: page
         in: query
@@ -49,7 +49,7 @@ paths:
       operationId: getUpload
       tags:
       - Uploads
-      summary: Retrieve a specific uploaded image.
+      summary: Retrieve a specific uploaded image
       parameters:
       - $ref: '#/components/parameters/ImageId'
       responses:
@@ -64,7 +64,7 @@ paths:
       operationId: uploadImage
       tags:
       - Uploads
-      summary: Upload an image via URL or base64-encoded contents.
+      summary: Upload an image via URL or base64-encoded contents
       requestBody:
         required: true
         content:
@@ -94,20 +94,13 @@ paths:
       operationId: archiveUpload
       tags:
       - Uploads
-      summary: Archive an uploaded image.
+      summary: Archive an uploaded image
       parameters:
       - $ref: '#/components/parameters/ImageId'
       responses:
         '200':
           description: The image was archived.
 components:
-  parameters:
-    ImageId:
-      name: image_id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
     Upload:
       type: object
@@ -128,6 +121,13 @@ components:
           type: string
         upload_time:
           type: string
+  parameters:
+    ImageId:
+      name: image_id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

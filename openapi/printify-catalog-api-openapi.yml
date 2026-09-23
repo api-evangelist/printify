@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Printify Catalog API
   description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
@@ -20,7 +20,7 @@ paths:
       operationId: listBlueprints
       tags:
       - Catalog
-      summary: Retrieve a list of available blueprints.
+      summary: Retrieve a list of available blueprints
       responses:
         '200':
           description: A list of blueprints.
@@ -35,7 +35,7 @@ paths:
       operationId: getBlueprint
       tags:
       - Catalog
-      summary: Retrieve a specific blueprint.
+      summary: Retrieve a specific blueprint
       parameters:
       - $ref: '#/components/parameters/BlueprintId'
       responses:
@@ -50,7 +50,7 @@ paths:
       operationId: listBlueprintPrintProviders
       tags:
       - Catalog
-      summary: Retrieve a list of print providers for a specific blueprint.
+      summary: Retrieve a list of print providers for a specific blueprint
       parameters:
       - $ref: '#/components/parameters/BlueprintId'
       responses:
@@ -67,7 +67,7 @@ paths:
       operationId: listVariants
       tags:
       - Catalog
-      summary: Retrieve a list of variants of a blueprint from a specific print provider.
+      summary: Retrieve a list of variants of a blueprint from a specific print provider
       parameters:
       - $ref: '#/components/parameters/BlueprintId'
       - $ref: '#/components/parameters/PrintProviderId'
@@ -92,7 +92,7 @@ paths:
       operationId: getVariantShipping
       tags:
       - Catalog
-      summary: Retrieve shipping information for a blueprint from a specific print provider.
+      summary: Retrieve shipping information for a blueprint from a specific print provider
       parameters:
       - $ref: '#/components/parameters/BlueprintId'
       - $ref: '#/components/parameters/PrintProviderId'
@@ -108,7 +108,7 @@ paths:
       operationId: listPrintProviders
       tags:
       - Catalog
-      summary: Retrieve a list of all available print providers.
+      summary: Retrieve a list of all available print providers
       responses:
         '200':
           description: A list of print providers.
@@ -123,7 +123,7 @@ paths:
       operationId: getPrintProvider
       tags:
       - Catalog
-      summary: Retrieve a specific print provider and the blueprints it supports.
+      summary: Retrieve a specific print provider and the blueprints it supports
       parameters:
       - $ref: '#/components/parameters/PrintProviderId'
       responses:
@@ -148,23 +148,6 @@ components:
       schema:
         type: integer
   schemas:
-    Blueprint:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        brand:
-          type: string
-        model:
-          type: string
-        images:
-          type: array
-          items:
-            type: string
     ShippingInfo:
       type: object
       properties:
@@ -202,26 +185,6 @@ components:
                 type: array
                 items:
                   type: string
-    PrintProvider:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        location:
-          type: object
-          properties:
-            address1:
-              type: string
-            city:
-              type: string
-            country:
-              type: string
-            region:
-              type: string
-            zip:
-              type: string
     Variant:
       type: object
       properties:
@@ -243,6 +206,43 @@ components:
                 type: integer
               width:
                 type: integer
+    PrintProvider:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        location:
+          type: object
+          properties:
+            address1:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+            region:
+              type: string
+            zip:
+              type: string
+    Blueprint:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
   securitySchemes:
     bearerAuth:
       type: http

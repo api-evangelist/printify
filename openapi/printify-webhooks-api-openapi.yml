@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Printify Catalog Webhooks API
+  title: Printify Webhooks API
   description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
   termsOfService: https://printify.com/terms-of-service/
   contact:
@@ -20,7 +20,7 @@ paths:
       operationId: listWebhooks
       tags:
       - Webhooks
-      summary: Retrieve a list of webhooks configured for a shop.
+      summary: Retrieve a list of webhooks configured for a shop
       parameters:
       - $ref: '#/components/parameters/ShopId'
       responses:
@@ -36,7 +36,7 @@ paths:
       operationId: createWebhook
       tags:
       - Webhooks
-      summary: Create a new webhook.
+      summary: Create a new webhook
       parameters:
       - $ref: '#/components/parameters/ShopId'
       requestBody:
@@ -66,7 +66,7 @@ paths:
       operationId: updateWebhook
       tags:
       - Webhooks
-      summary: Modify an existing webhook.
+      summary: Modify an existing webhook
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/WebhookId'
@@ -90,7 +90,7 @@ paths:
       operationId: deleteWebhook
       tags:
       - Webhooks
-      summary: Delete a webhook.
+      summary: Delete a webhook
       parameters:
       - $ref: '#/components/parameters/ShopId'
       - $ref: '#/components/parameters/WebhookId'
@@ -98,19 +98,6 @@ paths:
         '200':
           description: The webhook was deleted.
 components:
-  parameters:
-    WebhookId:
-      name: webhook_id
-      in: path
-      required: true
-      schema:
-        type: string
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
     Webhook:
       type: object
@@ -125,6 +112,19 @@ components:
           type: integer
         secret:
           type: string
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    WebhookId:
+      name: webhook_id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

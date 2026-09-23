@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Printify Catalog Shops API
+  title: Printify Shops API
   description: The Printify REST API allows your application to manage a Printify shop on behalf of a Printify merchant. Browse the catalog of blueprints and print providers, create and publish products, submit and track orders, upload artwork, and subscribe to webhooks. All requests are authenticated with a Bearer token (Personal Access Token or OAuth 2.0) and must include a User-Agent header.
   termsOfService: https://printify.com/terms-of-service/
   contact:
@@ -20,7 +20,7 @@ paths:
       operationId: listShops
       tags:
       - Shops
-      summary: Retrieve the list of shops in a Printify account.
+      summary: Retrieve the list of shops in a Printify account
       responses:
         '200':
           description: A list of connected shops.
@@ -35,13 +35,20 @@ paths:
       operationId: disconnectShop
       tags:
       - Shops
-      summary: Disconnect a shop from the account.
+      summary: Disconnect a shop from the account
       parameters:
       - $ref: '#/components/parameters/ShopId'
       responses:
         '200':
           description: The shop was disconnected.
 components:
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
     Shop:
       type: object
@@ -52,13 +59,6 @@ components:
           type: string
         sales_channel:
           type: string
-  parameters:
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     bearerAuth:
       type: http
