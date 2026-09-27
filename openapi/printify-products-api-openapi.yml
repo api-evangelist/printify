@@ -185,36 +185,6 @@ paths:
           description: The product was marked as unpublished.
 components:
   schemas:
-    PublishRequest:
-      type: object
-      properties:
-        title:
-          type: boolean
-        description:
-          type: boolean
-        images:
-          type: boolean
-        variants:
-          type: boolean
-        tags:
-          type: boolean
-        keyFeatures:
-          type: boolean
-        shipping_template:
-          type: boolean
-    ProductList:
-      type: object
-      properties:
-        current_page:
-          type: integer
-        last_page:
-          type: integer
-        total:
-          type: integer
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
     Product:
       type: object
       properties:
@@ -292,19 +262,49 @@ components:
                 type: array
                 items:
                   type: object
+    ProductList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        last_page:
+          type: integer
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    PublishRequest:
+      type: object
+      properties:
+        title:
+          type: boolean
+        description:
+          type: boolean
+        images:
+          type: boolean
+        variants:
+          type: boolean
+        tags:
+          type: boolean
+        keyFeatures:
+          type: boolean
+        shipping_template:
+          type: boolean
   parameters:
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
     ProductId:
       name: product_id
       in: path
       required: true
       schema:
         type: string
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http
