@@ -148,44 +148,6 @@ components:
       schema:
         type: integer
   schemas:
-    Variant:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        options:
-          type: object
-          additionalProperties: true
-        placeholders:
-          type: array
-          items:
-            type: object
-            properties:
-              position:
-                type: string
-              height:
-                type: integer
-              width:
-                type: integer
-    Blueprint:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        brand:
-          type: string
-        model:
-          type: string
-        images:
-          type: array
-          items:
-            type: string
     ShippingInfo:
       type: object
       properties:
@@ -223,6 +185,27 @@ components:
                 type: array
                 items:
                   type: string
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        options:
+          type: object
+          additionalProperties: true
+        placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
     PrintProvider:
       type: object
       properties:
@@ -243,6 +226,23 @@ components:
               type: string
             zip:
               type: string
+    Blueprint:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
   securitySchemes:
     bearerAuth:
       type: http

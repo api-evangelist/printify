@@ -42,13 +42,6 @@ paths:
         '200':
           description: The shop was disconnected.
 components:
-  parameters:
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
     Shop:
       type: object
@@ -59,6 +52,13 @@ components:
           type: string
         sales_channel:
           type: string
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http
