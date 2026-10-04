@@ -98,6 +98,19 @@ paths:
         '200':
           description: The webhook was deleted.
 components:
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    WebhookId:
+      name: webhook_id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     Webhook:
       type: object
@@ -112,19 +125,6 @@ components:
           type: integer
         secret:
           type: string
-  parameters:
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
-    WebhookId:
-      name: webhook_id
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

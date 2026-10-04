@@ -134,78 +134,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrintProvider'
 components:
-  parameters:
-    BlueprintId:
-      name: blueprint_id
-      in: path
-      required: true
-      schema:
-        type: integer
-    PrintProviderId:
-      name: print_provider_id
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
-    ShippingInfo:
-      type: object
-      properties:
-        handling_time:
-          type: object
-          properties:
-            value:
-              type: integer
-            unit:
-              type: string
-        profiles:
-          type: array
-          items:
-            type: object
-            properties:
-              variant_ids:
-                type: array
-                items:
-                  type: integer
-              first_item:
-                type: object
-                properties:
-                  cost:
-                    type: integer
-                  currency:
-                    type: string
-              additional_items:
-                type: object
-                properties:
-                  cost:
-                    type: integer
-                  currency:
-                    type: string
-              countries:
-                type: array
-                items:
-                  type: string
-    Variant:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        options:
-          type: object
-          additionalProperties: true
-        placeholders:
-          type: array
-          items:
-            type: object
-            properties:
-              position:
-                type: string
-              height:
-                type: integer
-              width:
-                type: integer
     PrintProvider:
       type: object
       properties:
@@ -243,6 +172,77 @@ components:
           type: array
           items:
             type: string
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        options:
+          type: object
+          additionalProperties: true
+        placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
+    ShippingInfo:
+      type: object
+      properties:
+        handling_time:
+          type: object
+          properties:
+            value:
+              type: integer
+            unit:
+              type: string
+        profiles:
+          type: array
+          items:
+            type: object
+            properties:
+              variant_ids:
+                type: array
+                items:
+                  type: integer
+              first_item:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                  currency:
+                    type: string
+              additional_items:
+                type: object
+                properties:
+                  cost:
+                    type: integer
+                  currency:
+                    type: string
+              countries:
+                type: array
+                items:
+                  type: string
+  parameters:
+    PrintProviderId:
+      name: print_provider_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    BlueprintId:
+      name: blueprint_id
+      in: path
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http
