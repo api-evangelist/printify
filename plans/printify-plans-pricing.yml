@@ -40,3 +40,35 @@ plans:
   period: none
   included_quota: Unlimited stores per account, Unlimited product designs, Additional discounts on all
     products
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units:
+  - object
+  plans:
+  - name: Free
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Premium
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
