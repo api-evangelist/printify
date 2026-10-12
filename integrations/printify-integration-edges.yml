@@ -1,0 +1,44 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://composio.dev/toolkits/printify
+checked:
+- https://composio.dev/toolkits/printify
+- https://monid.ai/tools/printify
+- https://n8n.io/integrations/printify/
+- https://zapier.com/apps/printify/integrations
+summary: null
+marketplace_apps:
+- marketplace: composio
+  channel: agent-gateway
+  app: printify
+  url: https://composio.dev/toolkits/printify
+  identity: action-prefix
+  actions:
+  - key: PRINTIFY_ARCHIVE_UPLOAD
+  - key: PRINTIFY_CALCULATE_ORDER_SHIPPING
+  - key: PRINTIFY_CREATE_PRODUCT
+  - key: PRINTIFY_CREATE_WEBHOOK
+  - key: PRINTIFY_DELETE_PRODUCT
+  - key: PRINTIFY_DELETE_WEBHOOK
+  - key: PRINTIFY_GET_BLUEPRINT
+  - key: PRINTIFY_GET_ORDER
+  - key: PRINTIFY_GET_PRODUCT
+  - key: PRINTIFY_GET_SHIPPING_DETAILS
+  - key: PRINTIFY_LIST_BLUEPRINT_PRINT_PROVIDERS
+  - key: PRINTIFY_LIST_BLUEPRINT_VARIANTS
+  - key: PRINTIFY_LIST_ORDERS
+  - key: PRINTIFY_LIST_PRODUCTS
+  - key: PRINTIFY_LIST_SHIPPING_METHODS
+  - key: PRINTIFY_LIST_SHOPS
+  - key: PRINTIFY_LIST_UPLOADS
+  - key: PRINTIFY_LIST_WEBHOOKS
+  - key: PRINTIFY_PUBLISH_PRODUCT
+  - key: PRINTIFY_SEARCH_BLUEPRINTS
+  - key: PRINTIFY_SIMULATE_WEBHOOK
+  - key: PRINTIFY_UNPUBLISH_PRODUCT
+  - key: PRINTIFY_UPDATE_PRODUCT
+  - key: PRINTIFY_UPDATE_WEBHOOK
+  - key: PRINTIFY_UPLOAD_IMAGE
+edges: []
+templates: []
