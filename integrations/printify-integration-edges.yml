@@ -4,6 +4,7 @@ source:
 - https://composio.dev/toolkits/printify
 checked:
 - https://composio.dev/toolkits/printify
+- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://monid.ai/tools/printify
 - https://n8n.io/integrations/printify/
 - https://zapier.com/apps/printify/integrations
@@ -40,5 +41,31 @@ marketplace_apps:
   - key: PRINTIFY_UPDATE_PRODUCT
   - key: PRINTIFY_UPDATE_WEBHOOK
   - key: PRINTIFY_UPLOAD_IMAGE
-edges: []
+edges:
+- partner_name: Pipedream
+  partner: pipedream
+  partner_match: aggregator
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/printify
+  category: null
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: printify
+    matched_domain: printify.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: printify
+    actions: true
+    sources: true
+    builder: Pipedream repo (component)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
 templates: []
