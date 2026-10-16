@@ -3,15 +3,10 @@
   "feeds": [
     {
       "source": "https://printify.com/feed/",
-      "feed_url": "https://printify.com/feed/",
-      "title": "Printify Blog",
-      "saved": 0,
-      "error": "fetch_failed: HTTPError",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-10-03T12:15:37Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 18,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
