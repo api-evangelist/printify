@@ -99,18 +99,18 @@ paths:
           description: The webhook was deleted.
 components:
   parameters:
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
     WebhookId:
       name: webhook_id
       in: path
       required: true
       schema:
         type: string
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
     Webhook:
       type: object

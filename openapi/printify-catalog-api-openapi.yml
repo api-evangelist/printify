@@ -135,64 +135,6 @@ paths:
                 $ref: '#/components/schemas/PrintProvider'
 components:
   schemas:
-    PrintProvider:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        location:
-          type: object
-          properties:
-            address1:
-              type: string
-            city:
-              type: string
-            country:
-              type: string
-            region:
-              type: string
-            zip:
-              type: string
-    Blueprint:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        brand:
-          type: string
-        model:
-          type: string
-        images:
-          type: array
-          items:
-            type: string
-    Variant:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        options:
-          type: object
-          additionalProperties: true
-        placeholders:
-          type: array
-          items:
-            type: object
-            properties:
-              position:
-                type: string
-              height:
-                type: integer
-              width:
-                type: integer
     ShippingInfo:
       type: object
       properties:
@@ -230,6 +172,64 @@ components:
                 type: array
                 items:
                   type: string
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        options:
+          type: object
+          additionalProperties: true
+        placeholders:
+          type: array
+          items:
+            type: object
+            properties:
+              position:
+                type: string
+              height:
+                type: integer
+              width:
+                type: integer
+    Blueprint:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+    PrintProvider:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        location:
+          type: object
+          properties:
+            address1:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+            region:
+              type: string
+            zip:
+              type: string
   parameters:
     PrintProviderId:
       name: print_provider_id

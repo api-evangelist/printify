@@ -184,6 +184,19 @@ paths:
         '200':
           description: The product was marked as unpublished.
 components:
+  parameters:
+    ShopId:
+      name: shop_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    ProductId:
+      name: product_id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     Product:
       type: object
@@ -292,19 +305,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
-  parameters:
-    ProductId:
-      name: product_id
-      in: path
-      required: true
-      schema:
-        type: string
-    ShopId:
-      name: shop_id
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     bearerAuth:
       type: http
