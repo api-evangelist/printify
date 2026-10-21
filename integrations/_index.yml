@@ -153,3 +153,43 @@
     year: '2016'
   status: not-a-workflow
   arazzo: null
+- slug: printify-index-ventures
+  label: Index Ventures
+  partner: index-ventures
+  partner_name: Index Ventures
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://www.indexventures.com/companies/printify/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Index Ventures companies (indexventures.com/companies/)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Printify
+    register_id: https://www.indexventures.com/companies/printify/
+    register_country: null
+    register_website: http://www.printify.com
+    matched_domain: printify.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    sector: business-applications, retail
+  status: not-a-workflow
+  arazzo: null
+- slug: printify-amazon-selling-partner-appstore
+  label: Amazon Selling Partner Appstore
+  partner: amazon-seller-central
+  partner_name: Amazon Selling Partner Appstore
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sp.solution.64d68e6d-6adb-44d0-aa17-65362b9e2c98
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
