@@ -11,6 +11,11 @@ checked:
 - https://monid.ai/tools/printify
 - https://n8n.io/integrations/printify/
 - https://zapier.com/apps/printify/integrations
+- ebay/integrations/ebay-integration-edges.yml
+- etsy/integrations/etsy-integration-edges.yml
+- shopify/integrations/shopify-integration-edges.yml
+- squarespace/integrations/squarespace-integration-edges.yml
+- woocommerce/integrations/woocommerce-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: composio
@@ -101,4 +106,89 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: eBay (builder-directory)
+  partner: ebay
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: builder-directory
+  evidence: https://printify.com/ebay/
+  mirror_of: ebay/integrations/ebay-integration-edges.yml
+  apps:
+  - Printify for eBay
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: print-on-demand fulfilment integration
+- partner_name: Etsy (builder-directory)
+  partner: etsy
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: builder-directory
+  evidence: https://printify.com/etsy/
+  mirror_of: etsy/integrations/etsy-integration-edges.yml
+  apps:
+  - Printify for Etsy
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: print-on-demand fulfilment integration
+- partner_name: Shopify (builder-directory)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: builder-directory
+  evidence: https://printify.com/shopify/
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - Printify for Shopify
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: print-on-demand fulfilment integration
+- partner_name: Squarespace (builder-directory)
+  partner: squarespace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: builder-directory
+  evidence: https://printify.com/squarespace/
+  mirror_of: squarespace/integrations/squarespace-integration-edges.yml
+  apps:
+  - Printify for Squarespace
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: print-on-demand fulfilment integration
+- partner_name: WooCommerce (builder-directory)
+  partner: woocommerce
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: builder-directory
+  evidence: https://printify.com/woocommerce/
+  mirror_of: woocommerce/integrations/woocommerce-integration-edges.yml
+  apps:
+  - Printify for WooCommerce
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: print-on-demand fulfilment integration
 templates: []
