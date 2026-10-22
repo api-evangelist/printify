@@ -30,6 +30,7 @@ checked:
 - https://advertising.amazon.com/partners/directory
 - https://sellercentral.amazon.com/gspn
 - https://sellercentral.amazon.com/selling-partner-appstore
+- wix/integrations/wix-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: composio
@@ -120,6 +121,76 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: 500 Global
+  partner: 500-global
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://500.co/companies
+  category: accelerator portfolio participation
+  contract_reference:
+    register: 500 Global portfolio (500.co/companies; the page's own JSON 500.co/api/startups)
+    standard: null
+    spec_file: null
+    role: accelerator-portfolio-company
+    registered_name: Printify
+    register_id: https://500.co/companies
+    register_country: United States
+    register_website: printify.com
+    matched_domain: printify.com
+    matched_by: domain
+    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-accelerator-portfolios.py
+    detected: '2026-10-21'
+    batch: GA 18
+    year: '2016'
+  detected_by: sweep-accelerator-portfolios.py
+  first_seen: '2026-10-21'
+- partner_name: Index Ventures
+  partner: index-ventures
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.indexventures.com/companies/printify/
+  category: vc portfolio participation
+  contract_reference:
+    register: Index Ventures companies (indexventures.com/companies/)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Printify
+    register_id: https://www.indexventures.com/companies/printify/
+    register_country: null
+    register_website: http://www.printify.com
+    matched_domain: printify.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    sector: business-applications, retail
+  detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
+- partner_name: Amazon Selling Partner Appstore
+  partner: amazon-seller-central
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sp.solution.64d68e6d-6adb-44d0-aa17-65362b9e2c98
+  mirror_of: amazon-seller-central/integrations/amazon-seller-central-integration-edges.yml
+  apps:
+  - 'Printify: Print on Demand'
+  detected: '2026-10-21'
+  detected_by: sweep-amazon-sp-api-appstore.py
 - partner_name: eBay (builder-directory)
   partner: ebay
   partner_match: mirror
@@ -205,63 +276,8 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: print-on-demand fulfilment integration
-- partner_name: 500 Global
-  partner: 500-global
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://500.co/companies
-  category: accelerator portfolio participation
-  contract_reference:
-    register: 500 Global portfolio (500.co/companies; the page's own JSON 500.co/api/startups)
-    standard: null
-    spec_file: null
-    role: accelerator-portfolio-company
-    registered_name: Printify
-    register_id: https://500.co/companies
-    register_country: United States
-    register_website: printify.com
-    matched_domain: printify.com
-    matched_by: domain
-    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
-      an ownership and participation record, not conformance or certification'
-    detected_by: sweep-accelerator-portfolios.py
-    detected: '2026-10-21'
-    batch: GA 18
-    year: '2016'
-  detected_by: sweep-accelerator-portfolios.py
-  first_seen: '2026-10-21'
-- partner_name: Index Ventures
-  partner: index-ventures
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.indexventures.com/companies/printify/
-  category: vc portfolio participation
-  contract_reference:
-    register: Index Ventures companies (indexventures.com/companies/)
-    standard: null
-    spec_file: null
-    role: vc-portfolio-company
-    registered_name: Printify
-    register_id: https://www.indexventures.com/companies/printify/
-    register_country: null
-    register_website: http://www.printify.com
-    matched_domain: printify.com
-    matched_by: domain
-    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
-      an ownership and participation record, not conformance or certification'
-    detected_by: sweep-vc-portfolios.py
-    detected: '2026-10-21'
-    sector: business-applications, retail
-  detected_by: sweep-vc-portfolios.py
-  first_seen: '2026-10-21'
-- partner_name: Amazon Selling Partner Appstore
-  partner: amazon-seller-central
+- partner_name: Wix (own)
+  partner: wix
   partner_match: mirror
   mirror_match: domain
   type: marketplace
@@ -269,10 +285,14 @@ edges:
   direction: third-party
   channel: partner-built
   marketplace: own
-  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sp.solution.64d68e6d-6adb-44d0-aa17-65362b9e2c98
-  mirror_of: amazon-seller-central/integrations/amazon-seller-central-integration-edges.yml
+  evidence: https://www.wix.com/app-market/developer/printify
+  mirror_of: wix/integrations/wix-integration-edges.yml
   apps:
-  - 'Printify: Print on Demand'
-  detected: '2026-10-21'
-  detected_by: sweep-amazon-sp-api-appstore.py
+  - Printify
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Print on Demand
+  publisher_verified:
+  - Verified by Wix
 templates: []
