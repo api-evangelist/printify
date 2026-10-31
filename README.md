@@ -1,4 +1,4 @@
-# Printify (printify)
+# Printify
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,154 +66,129 @@
 
 Printify is a print-on-demand marketplace connecting merchants with a global network of print providers. The Printify REST API lets applications manage a Printify shop on a merchant's behalf - browsing the catalog of blueprints and print providers, creating and publishing products, submitting and tracking orders, uploading artwork, and subscribing to webhooks.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/printify/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/printify/refs/heads/main/apis.yml)
+**Areas:** Print on Demand · E-Commerce · Marketplace · Fulfillment · Merchandise
 
-## Tags
+## Printify on APIs.io
 
-- Print on Demand
-- Ecommerce
-- Marketplace
-- Fulfillment
-- Merchandise
+Everything profiled for Printify is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/printify/](https://apis.io/providers/printify/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-06-25
-- **Modified:** 2026-06-25
+- [Printify Catalog API](https://apis.io/apis/printify/printify-catalog-api/) — Blueprints, print providers, variants, and shipping in the Printify catalog.
+- [Printify Orders API](https://apis.io/apis/printify/printify-orders-api/) — Order submission, shipping calculation, production, and cancellation.
+- [Printify Products API](https://apis.io/apis/printify/printify-products-api/) — Products in a shop and their publishing lifecycle.
+- [Printify Shops API](https://apis.io/apis/printify/printify-shops-api/) — Stores connected to a Printify account.
+- [Printify Uploads API](https://apis.io/apis/printify/printify-uploads-api/) — Artwork uploads to the merchant Media Library.
+- [Printify Webhooks API](https://apis.io/apis/printify/printify-webhooks-api/) — Event notifications delivered to merchant endpoints.
 
-## APIs
+### Published properties
 
-### Printify Shops API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Lists the stores connected to a Printify account and disconnects a shop from the account.
+#### Agentic access (1)
 
-- **Human URL:** [https://developers.printify.com/#shops](https://developers.printify.com/#shops)
-- **Base URL:** `https://api.printify.com/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Printify Agentic Access](https://apis.io/agentic-access/printify/printify-agentic-access/)
 
-- Shops
-- Stores
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developers.printify.com/#shops)
-- [OpenAPI](openapi/printify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Printify API](https://apis.io/collections/printify/open-printify/)
+- [Printify Catalog API](https://apis.io/collections/printify/open-printify-catalog-api/)
+- [Printify Catalog Orders API](https://apis.io/collections/printify/open-printify-orders-api/)
+- [Printify Catalog Products API](https://apis.io/collections/printify/open-printify-products-api/)
+- [Printify Catalog Shops API](https://apis.io/collections/printify/open-printify-shops-api/)
+- [Printify Catalog Uploads API](https://apis.io/collections/printify/open-printify-uploads-api/)
+- [Printify Catalog Webhooks API](https://apis.io/collections/printify/open-printify-webhooks-api/)
 
-### Printify Catalog API
+#### Security (3)
 
-Browses the Printify catalog of blueprints (base products), their print providers, product variants and variant options, and shipping information available for fulfillment.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developers.printify.com/#catalog](https://developers.printify.com/#catalog)
-- **Base URL:** `https://api.printify.com/v1`
+- [Printify Authentication](https://apis.io/security/printify/printify-authentication/)
+- [Printify Domain Security](https://apis.io/security/printify/printify-domain-security/)
+- [Printify Vulnerability Disclosure](https://apis.io/security/printify/printify-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (2)
 
-- Catalog
-- Blueprints
-- Print Providers
-- Variants
+Published plans, tiers and prices.
 
-#### Properties
+- [Printify Plans Pricing](https://apis.io/plans/printify/printify-plans-pricing/)
+- [Printify Price Estimates](https://apis.io/plans/printify/printify-price-estimates/)
 
-- [Documentation](https://developers.printify.com/#catalog)
-- [OpenAPI](openapi/printify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Printify Products API
+Published request limits.
 
-Lists, creates, retrieves, updates, deletes, and publishes products in a shop, including publish status callbacks (succeeded, failed, unpublish) to keep a connected storefront in sync.
+- [Printify Rate Limits](https://apis.io/rate-limits/printify/printify-rate-limits/)
 
-- **Human URL:** [https://developers.printify.com/#products](https://developers.printify.com/#products)
-- **Base URL:** `https://api.printify.com/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Products
-- Publishing
-- Merchandise
+- [Printify Finops](https://apis.io/finops/printify/printify-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developers.printify.com/#products)
-- [OpenAPI](openapi/printify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Printify Orders API
-
-Lists and retrieves orders, submits new orders and express orders, calculates shipping costs, sends orders to production, and cancels unpaid orders.
-
-- **Human URL:** [https://developers.printify.com/#orders](https://developers.printify.com/#orders)
-- **Base URL:** `https://api.printify.com/v1`
-
-#### Tags
-
-- Orders
-- Fulfillment
-- Shipping
-
-#### Properties
-
-- [Documentation](https://developers.printify.com/#orders)
-- [OpenAPI](openapi/printify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Printify Uploads API
-
-Lists and retrieves uploaded images, uploads artwork to the merchant's Media Library via image URL or base64-encoded contents, and archives images.
-
-- **Human URL:** [https://developers.printify.com/#uploads](https://developers.printify.com/#uploads)
-- **Base URL:** `https://api.printify.com/v1`
-
-#### Tags
-
-- Uploads
-- Images
-- Media Library
-
-#### Properties
-
-- [Documentation](https://developers.printify.com/#uploads)
-- [OpenAPI](openapi/printify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Printify Webhooks API
-
-Lists, creates, modifies, and deletes webhooks that deliver instant POST notifications to a merchant's endpoint when product, order, and shop events occur.
-
-- **Human URL:** [https://developers.printify.com/#webhooks](https://developers.printify.com/#webhooks)
-- **Base URL:** `https://api.printify.com/v1`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://developers.printify.com/#webhooks)
-- [OpenAPI](openapi/printify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/printify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/printify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/printify)
-- [LinkedIn](https://www.linkedin.com/company/printify)
 - [Website](https://printify.com/)
 - [Documentation](https://developers.printify.com/)
-- [Plans](plans/printify-plans-pricing.yml)
-- [Rate Limits](rate-limits/printify-rate-limits.yml)
-- [Fin Ops](finops/printify-finops.yml)
+- [Pricing](https://printify.com/pricing/)
+- [Blog](https://printify.com/feed/)
+- [GitHub](https://github.com/printify)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 44.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 13.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 21.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 17.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/printify/](https://apis.io/providers/printify/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Printify: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/printify/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
